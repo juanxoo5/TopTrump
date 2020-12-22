@@ -11,10 +11,8 @@ public class Broadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        if(intent.getAction().equals(Intent.ACTION_BATTERY_LOW)) {
-            Toast.makeText(context, "BAttery's dying!!", Toast.LENGTH_LONG).show();
-            Log.e("", "BATTERY LOW!!");
-        }
+        Toast.makeText(context, "BAttery's dying!!", Toast.LENGTH_LONG).show();
+        Log.e("", "BATTERY LOW!!");
 
     }
 }

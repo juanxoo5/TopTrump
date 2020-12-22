@@ -14,15 +14,57 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_userFrament"
+            app:destination="@id/userFrament" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.toptrump.view.fragments.SecondFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        tools:layout="@layout/fragment_second"/>
+    <fragment
+        android:id="@+id/userFrament"
+        android:name="com.example.toptrump.UserFrament"
+        android:label="fragment_user_frament"
+        tools:layout="@layout/fragment_user_frament" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_userFrament_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_userFrament_to_playFragment"
+            app:destination="@id/playFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.toptrump.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/playFragment"
+        android:name="com.example.toptrump.PlayFragment"
+        android:label="fragment_play"
+        tools:layout="@layout/fragment_play" />
+    <fragment
+        android:id="@+id/admUserFragment"
+        android:name="com.example.toptrump.AdmUserFragment"
+        android:label="fragment_adm_user"
+        tools:layout="@layout/fragment_adm_user" />
+    <fragment
+        android:id="@+id/admCardFragment"
+        android:name="com.example.toptrump.AdmCardFragment"
+        android:label="fragment_adm_card"
+        tools:layout="@layout/fragment_adm_card" />
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.toptrump.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminFragment_to_admUserFragment"
+            app:destination="@id/admUserFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_admCardFragment"
+            app:destination="@id/admCardFragment" />
     </fragment>
 </navigation>
