@@ -11,4 +11,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enviar_puntuacion_al_correo">enviar puntuacion al correo</string>
+    <string name="userimage">UserImage</string>
+    <string name="username">UserName</string>
+    <string name="preguntas_contestadas">Preguntas contestadas:</string>
+    <string name="preguntas_corectas">Preguntas corectas:</string>
 </resources>

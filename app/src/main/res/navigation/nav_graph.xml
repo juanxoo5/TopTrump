@@ -12,17 +12,12 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_userFrament"
             app:destination="@id/userFrament" />
+        <action
+            android:id="@+id/action_FirstFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.toptrump.view.fragments.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second"/>
     <fragment
         android:id="@+id/userFrament"
         android:name="com.example.toptrump.UserFrament"
@@ -34,6 +29,9 @@
         <action
             android:id="@+id/action_userFrament_to_playFragment"
             app:destination="@id/playFragment" />
+        <action
+            android:id="@+id/action_userFrament_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
