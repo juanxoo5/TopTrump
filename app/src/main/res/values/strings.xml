@@ -16,4 +16,20 @@
     <string name="username">UserName</string>
     <string name="preguntas_contestadas">Preguntas contestadas:</string>
     <string name="preguntas_corectas">Preguntas corectas:</string>
+    <string name="usuarios_creados">Usuarios creados</string>
+    <string name="hola">hola</string>
+    <string name="imagen">imagen</string>
+    <string name="radiobutton">RadioButton</string>
+    <string name="respuesta">respuesta</string>
+    <string name="nombre">nombre</string>
+    <string name="descripcion">descripcion</string>
+    <string name="pregunta">pregunta</string>
+    <string name="enviar_respuesta">Enviar respuesta</string>
+    <string name="administrar_usuarios">Administrar usuarios</string>
+    <string name="administrar_cartas">Administrar cartas</string>
+    <string name="imgcartas">imgCartas</string>
+    <string name="imgusuarios">imgUsuarios</string>
+    <string name="clave">Clave</string>
+    <string name="enviar">Enviar</string>
+    <string name="introduzca_clave_de_administrador">Introduzca clave de administrador:</string>
 </resources>

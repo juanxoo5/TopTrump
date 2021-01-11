@@ -47,7 +47,14 @@
         android:id="@+id/admUserFragment"
         android:name="com.example.toptrump.AdmUserFragment"
         android:label="fragment_adm_user"
-        tools:layout="@layout/fragment_adm_user" />
+        tools:layout="@layout/fragment_adm_user" >
+        <action
+            android:id="@+id/action_admUserFragment_to_crearUsurFragment"
+            app:destination="@id/crearUsurFragment" />
+        <action
+            android:id="@+id/action_admUserFragment_to_editUsuFragment"
+            app:destination="@id/editUsuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/admCardFragment"
         android:name="com.example.toptrump.AdmCardFragment"
@@ -65,4 +72,14 @@
             android:id="@+id/action_adminFragment_to_admCardFragment"
             app:destination="@id/admCardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/crearUsurFragment"
+        android:name="com.example.toptrump.CrearUsuFragment"
+        android:label="fragment_crear_usur"
+        tools:layout="@layout/fragment_crear_usu" />
+    <fragment
+        android:id="@+id/editUsuFragment"
+        android:name="com.example.toptrump.EditUsuFragment"
+        android:label="fragment_edit_usu"
+        tools:layout="@layout/fragment_edit_usu" />
 </navigation>

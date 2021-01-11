@@ -58,7 +58,6 @@
         android:id="@+id/btSendPunctuation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
         android:text="@string/enviar_puntuacion_al_correo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
