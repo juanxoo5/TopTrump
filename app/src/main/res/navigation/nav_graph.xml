@@ -13,24 +13,24 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_userFrament"
-            app:destination="@id/userFrament" />
+            app:destination="@id/userFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
     </fragment>
     <fragment
-        android:id="@+id/userFrament"
+        android:id="@+id/userFragment"
         android:name="com.example.toptrump.UserFragment"
         android:label="fragment_user_frament"
         tools:layout="@layout/fragment_user_frament" >
         <action
-            android:id="@+id/action_userFrament_to_profileFragment"
+            android:id="@+id/action_userFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_userFrament_to_playFragment"
+            android:id="@+id/action_userFragment_to_playFragment"
             app:destination="@id/playFragment" />
         <action
-            android:id="@+id/action_userFrament_to_FirstFragment"
+            android:id="@+id/action_userFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
