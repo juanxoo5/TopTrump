@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/userFrament"
-        android:name="com.example.toptrump.UserFrament"
+        android:name="com.example.toptrump.UserFragment"
         android:label="fragment_user_frament"
         tools:layout="@layout/fragment_user_frament" >
         <action
