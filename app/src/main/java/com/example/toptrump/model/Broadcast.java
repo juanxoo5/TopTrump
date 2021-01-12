@@ -14,7 +14,9 @@ public class Broadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         Toast.makeText(context, "Battery's dying!!", Toast.LENGTH_LONG).show();
-        Log.e("", "BATTERY LOW!!");
+        Log.v("XYZ", "BATTERY LOW!!");
 
     }
 }
+
+
