@@ -82,4 +82,13 @@
         android:name="com.example.toptrump.view.fragments.EditUsuFragment"
         android:label="fragment_edit_usu"
         tools:layout="@layout/fragment_edit_usu" />
+    <fragment
+        android:id="@+id/claveFragment"
+        android:name="com.example.toptrump.view.fragments.ClaveFragment"
+        android:label="fragment_clave"
+        tools:layout="@layout/fragment_clave" >
+        <action
+            android:id="@+id/action_claveFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
 </navigation>

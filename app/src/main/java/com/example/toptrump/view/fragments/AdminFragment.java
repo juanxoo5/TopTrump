@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ public class AdminFragment extends Fragment {
         Button btUsuarios = view.findViewById(R.id.btAdminUsu);
         Button btCartas = view.findViewById(R.id.btAdminCart);
 
-        NavController navController = new NavController(view.getContext());
+        NavController navController = Navigation.findNavController(view);
 
         btUsuarios.setOnClickListener(new View.OnClickListener() {
             @Override
