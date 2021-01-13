@@ -4,29 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.AdminFragment" >
+    tools:context=".view.fragments.AdminFragment">
 
     <ImageButton
         android:id="@+id/btAdminUsu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="25dp"
+        android:background="#FFFFFF"
         android:contentDescription="@string/imgusuarios"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btAdminCart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUsu" />
+        android:src="@drawable/iconousuario"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/btAdminCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:background="#FFFFFF"
         android:contentDescription="@string/imgcartas"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/iconocarta"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toEndOf="@+id/btAdminUsu"
-        app:layout_constraintTop_toBottomOf="@+id/tvCart" />
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
     <TextView
         android:id="@+id/tvUsu"
@@ -34,8 +40,8 @@
         android:layout_height="wrap_content"
         android:text="@string/administrar_usuarios"
         app:layout_constraintBottom_toTopOf="@+id/btAdminUsu"
-        app:layout_constraintEnd_toStartOf="@+id/tvCart"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -43,9 +49,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/administrar_cartas"
-        app:layout_constraintBottom_toTopOf="@+id/btAdminCart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.621"
-        app:layout_constraintStart_toEndOf="@+id/tvUsu"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.500684" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18978103" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9294404" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 </androidx.constraintlayout.widget.ConstraintLayout>
