@@ -22,7 +22,7 @@
         android:id="@+id/userFragment"
         android:name="com.example.toptrump.view.fragments.UsuaFragment"
         android:label="fragment_user_frament"
-        tools:layout="@layout/fragment_user_frament" >
+        tools:layout="@layout/fragment_usua" >
         <action
             android:id="@+id/action_userFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -37,12 +37,12 @@
         android:id="@+id/profileFragment"
         android:name="com.example.toptrump.view.fragments.PerfilFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/playFragment"
         android:name="com.example.toptrump.view.fragments.JuegoFragment"
         android:label="fragment_play"
-        tools:layout="@layout/fragment_play" />
+        tools:layout="@layout/fragment_juego" />
     <fragment
         android:id="@+id/admUserFragment"
         android:name="com.example.toptrump.view.fragments.AdmUserFragment"
