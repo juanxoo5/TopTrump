@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.toptrump.R;
 
@@ -28,8 +29,8 @@ public class AdminFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btUsuarios = view.findViewById(R.id.btAdminUsu);
-        Button btCartas = view.findViewById(R.id.btAdminCart);
+        ImageButton btUsuarios = view.findViewById(R.id.btAdminUsu);
+        ImageButton btCartas = view.findViewById(R.id.btAdminCart);
 
         NavController navController = Navigation.findNavController(view);
 
