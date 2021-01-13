@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.toptrump.R;
 
-public class FirstFragment extends Fragment {
+public class RegistFragment extends Fragment {
 
     @Override
     public View onCreateView(

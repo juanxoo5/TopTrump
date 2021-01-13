@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.toptrump.view.fragments.FirstFragment"
+        android:name="com.example.toptrump.view.fragments.RegistFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.example.toptrump.UserFragment"
+        android:name="com.example.toptrump.view.fragments.UsuaFragment"
         android:label="fragment_user_frament"
         tools:layout="@layout/fragment_user_frament" >
         <action
@@ -35,17 +35,17 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.toptrump.ProfileFragment"
+        android:name="com.example.toptrump.view.fragments.PerfilFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/playFragment"
-        android:name="com.example.toptrump.PlayFragment"
+        android:name="com.example.toptrump.view.fragments.JuegoFragment"
         android:label="fragment_play"
         tools:layout="@layout/fragment_play" />
     <fragment
         android:id="@+id/admUserFragment"
-        android:name="com.example.toptrump.AdmUserFragment"
+        android:name="com.example.toptrump.view.fragments.AdmUserFragment"
         android:label="fragment_adm_user"
         tools:layout="@layout/fragment_adm_user" >
         <action
@@ -57,12 +57,12 @@
     </fragment>
     <fragment
         android:id="@+id/admCardFragment"
-        android:name="com.example.toptrump.AdmCardFragment"
+        android:name="com.example.toptrump.view.fragments.AdmCardFragment"
         android:label="fragment_adm_card"
         tools:layout="@layout/fragment_adm_card" />
     <fragment
         android:id="@+id/adminFragment"
-        android:name="com.example.toptrump.AdminFragment"
+        android:name="com.example.toptrump.view.fragments.AdminFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" >
         <action
@@ -74,12 +74,12 @@
     </fragment>
     <fragment
         android:id="@+id/crearUsurFragment"
-        android:name="com.example.toptrump.CrearUsuFragment"
+        android:name="com.example.toptrump.view.fragments.CrearUsuFragment"
         android:label="fragment_crear_usur"
         tools:layout="@layout/fragment_crear_usu" />
     <fragment
         android:id="@+id/editUsuFragment"
-        android:name="com.example.toptrump.EditUsuFragment"
+        android:name="com.example.toptrump.view.fragments.EditUsuFragment"
         android:label="fragment_edit_usu"
         tools:layout="@layout/fragment_edit_usu" />
 </navigation>
