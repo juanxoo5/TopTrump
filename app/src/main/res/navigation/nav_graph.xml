@@ -30,19 +30,27 @@
             android:id="@+id/action_userFragment_to_playFragment"
             app:destination="@id/playFragment" />
         <action
-            android:id="@+id/action_userFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_userFragment_to_claveFragment"
+            app:destination="@id/claveFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.toptrump.view.fragments.PerfilFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_profileFragment_to_claveFragment"
+            app:destination="@id/claveFragment" />
+    </fragment>
     <fragment
         android:id="@+id/playFragment"
         android:name="com.example.toptrump.view.fragments.JuegoFragment"
         android:label="fragment_play"
-        tools:layout="@layout/fragment_juego" />
+        tools:layout="@layout/fragment_juego" >
+        <action
+            android:id="@+id/action_playFragment_to_claveFragment"
+            app:destination="@id/claveFragment" />
+    </fragment>
     <fragment
         android:id="@+id/admUserFragment"
         android:name="com.example.toptrump.view.fragments.AdmUserFragment"
