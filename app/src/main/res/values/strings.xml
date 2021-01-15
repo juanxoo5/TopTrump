@@ -32,4 +32,8 @@
     <string name="clave">Clave</string>
     <string name="enviar">Enviar</string>
     <string name="introduzca_clave_de_administrador">Introduzca clave de administrador:</string>
+    <string name="titulo_permiso_estado">Estado del teléfono</string>
+    <string name="mensaje_permiso_contactos">Este permiso es necesario para poder registrar la batería del teléfono móvil y avisar cuando el nivel de carga de esta sea baja</string>
+    <string name="aceptar">aceptar</string>
+    <string name="cancelar">cancelar</string>
 </resources>
