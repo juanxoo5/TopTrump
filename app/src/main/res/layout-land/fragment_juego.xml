@@ -51,47 +51,11 @@
         android:id="@+id/tvPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="@string/pregunta"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btEnviar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/tvPregunta">
-
-        <RadioButton
-            android:id="@+id/rbResp1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/respuesta" />
-
-        <RadioButton
-            android:id="@+id/rbResp2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/respuesta" />
-
-        <RadioButton
-            android:id="@+id/rbResp3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/respuesta" />
-
-        <RadioButton
-            android:id="@+id/rbResp4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/respuesta" />
-    </RadioGroup>
 
     <Button
         android:id="@+id/btEnviar"
@@ -102,7 +66,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -110,5 +74,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.46" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/respuesta"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btEnviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/tvPregunta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
