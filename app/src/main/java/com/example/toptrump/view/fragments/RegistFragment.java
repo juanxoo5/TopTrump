@@ -61,7 +61,7 @@ public class RegistFragment extends Fragment {
                     Log.v("XYZ",comprobarClave.toString());
                     clave = texto.getText().toString();
                     if(clave.isEmpty()){
-                        // control de errores (preguntar)
+                        // control de errores (preguntar) y json
                         control.setError("No puede poner una contraseña vacía");
 
                     } else {
