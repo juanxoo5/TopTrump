@@ -1,10 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.toptrump.view.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/claveFragment"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/administrador"
         app:showAsAction="never" />
+        <item
+            android:id="@+id/juegoFragment"
+            android:orderInCategory="100"
+            android:title="@string/jugar"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/perfilFragment"
+            android:orderInCategory="100"
+            android:title="@string/perfil"
+            app:showAsAction="never" />
 </menu>

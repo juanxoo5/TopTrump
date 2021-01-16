@@ -3,38 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/InicioFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/InicioFragment"
         android:name="com.example.toptrump.view.fragments.RegistFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
         <action
             android:id="@+id/action_FirstFragment_to_userFrament"
-            app:destination="@id/userFragment" />
+            app:destination="@id/usuaFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
     </fragment>
     <fragment
-        android:id="@+id/userFragment"
+        android:id="@+id/usuaFragment"
         android:name="com.example.toptrump.view.fragments.UsuaFragment"
         android:label="fragment_user_frament"
         tools:layout="@layout/fragment_usua" >
         <action
             android:id="@+id/action_userFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/perfilFragment" />
         <action
             android:id="@+id/action_userFragment_to_playFragment"
-            app:destination="@id/playFragment" />
+            app:destination="@id/juegoFragment" />
         <action
             android:id="@+id/action_userFragment_to_claveFragment"
             app:destination="@id/claveFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/perfilFragment"
         android:name="com.example.toptrump.view.fragments.PerfilFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_perfil" >
@@ -43,7 +43,7 @@
             app:destination="@id/claveFragment" />
     </fragment>
     <fragment
-        android:id="@+id/playFragment"
+        android:id="@+id/juegoFragment"
         android:name="com.example.toptrump.view.fragments.JuegoFragment"
         android:label="fragment_play"
         tools:layout="@layout/fragment_juego" >
@@ -52,20 +52,20 @@
             app:destination="@id/claveFragment" />
     </fragment>
     <fragment
-        android:id="@+id/admUserFragment"
-        android:name="com.example.toptrump.view.fragments.AdmUserFragment"
+        android:id="@+id/admUsuaFragment"
+        android:name="com.example.toptrump.view.fragments.AdmUsuaFragment"
         android:label="fragment_adm_user"
         tools:layout="@layout/fragment_adm_user" >
         <action
             android:id="@+id/action_admUserFragment_to_crearUsurFragment"
-            app:destination="@id/crearUsurFragment" />
+            app:destination="@id/crearUsuaFragment" />
         <action
             android:id="@+id/action_admUserFragment_to_editUsuFragment"
-            app:destination="@id/editUsuFragment" />
+            app:destination="@id/editUsuaFragment" />
     </fragment>
     <fragment
-        android:id="@+id/admCardFragment"
-        android:name="com.example.toptrump.view.fragments.AdmCardFragment"
+        android:id="@+id/admCartFragment"
+        android:name="com.example.toptrump.view.fragments.AdmCartFragment"
         android:label="fragment_adm_card"
         tools:layout="@layout/fragment_adm_card" />
     <fragment
@@ -75,18 +75,18 @@
         tools:layout="@layout/fragment_admin" >
         <action
             android:id="@+id/action_adminFragment_to_admUserFragment"
-            app:destination="@id/admUserFragment" />
+            app:destination="@id/admUsuaFragment" />
         <action
             android:id="@+id/action_adminFragment_to_admCardFragment"
-            app:destination="@id/admCardFragment" />
+            app:destination="@id/admCartFragment" />
     </fragment>
     <fragment
-        android:id="@+id/crearUsurFragment"
+        android:id="@+id/crearUsuaFragment"
         android:name="com.example.toptrump.view.fragments.CrearUsuFragment"
         android:label="fragment_crear_usur"
         tools:layout="@layout/fragment_crear_usu" />
     <fragment
-        android:id="@+id/editUsuFragment"
+        android:id="@+id/editUsuaFragment"
         android:name="com.example.toptrump.view.fragments.EditUsuFragment"
         android:label="fragment_edit_usu"
         tools:layout="@layout/fragment_edit_usu" />

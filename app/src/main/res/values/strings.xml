@@ -36,4 +36,8 @@
     <string name="mensaje_permiso_contactos">Este permiso es necesario para poder registrar la batería del teléfono móvil y avisar cuando el nivel de carga de esta sea baja</string>
     <string name="aceptar">aceptar</string>
     <string name="cancelar">cancelar</string>
+    <string name="administrador">Administrador</string>
+    <string name="jugar">Jugar</string>
+    <string name="perfil">Perfil</string>
+    <string name="usuario">Usuario</string>
 </resources>
