@@ -37,7 +37,6 @@ public class ClaveFragment extends Fragment {
     TextInputLayout control;
     String clave;
     SharedPreferences sp;
-    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,8 +48,7 @@ public class ClaveFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.view = view;
-        navigation();
+        navigation(view);
         
         bt = view.findViewById(R.id.btEnvClav);
         texto = view.findViewById(R.id.tietClave);
@@ -73,13 +71,13 @@ public class ClaveFragment extends Fragment {
         });
     }
 
-    public void navigation(){
+    public void navigation(View view){
 
         MainActivity mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbAdmCartFrgm);
+        Toolbar toolbar = view.findViewById(R.id.tbClaveFrgm);
         mainActivity.setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutAdmCart);
+        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutClave);
         NavigationView navigationView = view.findViewById(R.id.nav_view);
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 

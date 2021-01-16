@@ -25,8 +25,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class CrearUsuFragment extends Fragment {
 
-    private View view;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,20 +36,19 @@ public class CrearUsuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.view = view;
-        navigation();
+        navigation(view);
         
         NavController navController = new NavController(view.getContext());
 
     }
 
-    public void navigation(){
+    public void navigation(View view){
 
         MainActivity mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbAdmCartFrgm);
+        Toolbar toolbar = view.findViewById(R.id.tbCrearUsuFrgm);
         mainActivity.setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutAdmCart);
+        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutCrearUsu);
         NavigationView navigationView = view.findViewById(R.id.nav_view);
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
