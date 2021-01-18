@@ -3,6 +3,8 @@ package com.example.toptrump.view.fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +35,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistFragment extends Fragment {
 
+    private TextWatcher twClave;
     Button bt;
     TextInputEditText texto;
     TextInputLayout control;
@@ -43,15 +46,19 @@ public class RegistFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         return inflater.inflate(R.layout.fragment_first, container, false);
     }
+
+
+
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         bt = view.findViewById(R.id.btEnvClav);
-        texto = view.findViewById(R.id.tietClave);
         control = view.findViewById(R.id.tilClave);
+        texto = view.findViewById(R.id.tietClave);
 
         NavController navController = new NavController(view.getContext());
 
@@ -70,7 +77,7 @@ public class RegistFragment extends Fragment {
                     clave = texto.getText().toString();
                     if(clave.isEmpty()){
                         // control de errores (preguntar) y json
-                        control.setError("No puede poner una contraseña vacía");
+                        Toast.makeText(view.getContext(),"No puede poner una contraseña vacía", Toast.LENGTH_LONG).show();
 
                     } else {
                         // guarda y lleva a administración

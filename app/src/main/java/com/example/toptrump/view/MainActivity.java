@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final int PERMISO_PHONE_STATE = 1;
 
+
+    // usar el mio
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
