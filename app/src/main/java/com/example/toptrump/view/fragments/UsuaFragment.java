@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -25,8 +26,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class UsuaFragment extends Fragment {
 
-    private View view;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,18 +37,17 @@ public class UsuaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.view = view;
-        navigation();
+        navigation(view);
 
     }
 
-    public void navigation(){
+    public void navigation(View view){
 
         MainActivity mainActivity = (MainActivity) view.getContext();
         Toolbar toolbar = view.findViewById(R.id.tbUsuariosFrgm);
         mainActivity.setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutAdmCart);
+        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutUsua);
         NavigationView navigationView = view.findViewById(R.id.nav_view);
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
