@@ -81,6 +81,7 @@ public class ClaveFragment extends Fragment {
         NavigationView navigationView = view.findViewById(R.id.nav_view);
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
+        Log.v("navigation controler", navController.toString());
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);

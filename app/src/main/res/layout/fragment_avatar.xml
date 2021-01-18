@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayoutCrearUsu"
-    tools:context=".view.fragments.CrearUsuFragment">
+    android:id="@+id/drawerLayoutAvatar"
+    tools:context=".AvatarFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/CoordinatorLayout"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tbCrearUsuFrgm"
+                android:id="@+id/tbAvatarFrgm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
@@ -29,31 +29,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/ibtAvatar"
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
-                android:contentDescription="@string/imagen"
-                app:layout_constraintBottom_toTopOf="@+id/etNombreUsuario"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/elige_un_avatar"
+                app:layout_constraintBottom_toTopOf="@+id/rvAvatares"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tbCrearUsuFrgm"
-                tools:src="@tools:sample/avatars" />
+                app:layout_constraintTop_toBottomOf="@+id/tbAvatarFrgm" />
 
-            <EditText
-                android:id="@+id/etNombreUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/nombre"
-                android:inputType="textPersonName"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAvatares"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ibtAvatar" />
+                app:layout_constraintTop_toBottomOf="@id/textView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
