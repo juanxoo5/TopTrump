@@ -12,6 +12,7 @@ import com.example.toptrump.R;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.util.Log;
 
@@ -19,17 +20,16 @@ public class MainActivity extends AppCompatActivity {
 
     private final int PERMISO_PHONE_STATE = 1;
 
-
-    // usar el mio
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == PERMISO_PHONE_STATE) {
-            int StateConcedido = grantResults[0];
-            if (StateConcedido == PackageManager.PERMISSION_GRANTED) {
-                Log.v("xyzyxPermisos", "obteniendo permisos");
-            } else {
-                obtenerEstadoPermisos();
+        switch (requestCode){
+            case PERMISO_PHONE_STATE: {
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                    }
+                } else {
+                    obtenerPermisoTelefono();
+                } return;
             }
         }
     }
@@ -38,13 +38,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        obtenerPermisoTelefono();
 
+    }
+
+    private void obtenerPermisoTelefono() {
+        int result = PackageManager.PERMISSION_GRANTED;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            result = checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
+        }
+        if(result == PackageManager.PERMISSION_DENIED) {
+            obtenerEstadoPermisos();
+        }
     }
 
     private void obtenerEstadoPermisos() {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED){
-            Log.v("xyzPermisos", "obteniendo permisos");
         } else {
             if(shouldShowRequestPermissionRationale(Manifest.permission.READ_PHONE_STATE)) {
                 mostrarExplicacionDetalladaPermPhoneState();

@@ -2,6 +2,7 @@ package com.example.toptrump.view.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -77,7 +78,11 @@ public class RegistFragment extends Fragment {
                     clave = texto.getText().toString();
                     if(clave.isEmpty()){
                         // control de errores (preguntar) y json
-                        Toast.makeText(view.getContext(),"No puede poner una contraseña vacía", Toast.LENGTH_LONG).show();
+                        Toast toast = Toast.makeText(view.getContext()," No puede poner una contraseña vacía ", Toast.LENGTH_LONG);
+                        toast.getView().setBackgroundColor(Color.RED);
+                        toast.show();
+
+
 
                     } else {
                         // guarda y lleva a administración
