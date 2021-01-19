@@ -50,9 +50,9 @@ public class ClaveFragment extends Fragment {
 
         navigation(view);
         
-        bt = view.findViewById(R.id.btEnvClav);
-        texto = view.findViewById(R.id.tietClave);
-        control = view.findViewById(R.id.tilClave);
+        bt = view.findViewById(R.id.btEnvClav2);
+        texto = view.findViewById(R.id.tietClave2);
+        control = view.findViewById(R.id.tilClave2);
 
         sp = getContext().getSharedPreferences("dato", Context.MODE_PRIVATE);
         String comprobarClave = sp.getString("clave","");
