@@ -42,7 +42,7 @@ public class ClaveFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        return inflater.inflate(R.layout.fragment_clave, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
