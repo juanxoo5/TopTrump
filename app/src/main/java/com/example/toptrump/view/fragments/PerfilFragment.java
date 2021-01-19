@@ -1,5 +1,7 @@
 package com.example.toptrump.view.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,6 +43,18 @@ public class PerfilFragment extends Fragment {
         navigation(view);
 
         Button btCorreo = view.findViewById(R.id.btEnvPunctuation);
+
+        btCorreo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String mensaje = "";
+                Log.v("XYZ",mensaje);
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","correo@gmail.com", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "TopTrump - Puntuaciones");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
+                startActivity(Intent.createChooser(emailIntent,  getActivity().getString(R.string.enviar_mail)));
+            }
+        });
 
         NavController navController = new NavController(view.getContext());
     }

@@ -19,6 +19,7 @@ import android.util.Log;
 public class MainActivity extends AppCompatActivity {
 
     private final int PERMISO_PHONE_STATE = 1;
+    private final int PERMISO_READ_CONTACT = 2;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         obtenerPermisoTelefono();
-
     }
 
     private void obtenerPermisoTelefono() {
