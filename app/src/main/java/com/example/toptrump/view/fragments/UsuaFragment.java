@@ -22,12 +22,14 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
 import com.example.toptrump.view.MainActivity;
+import com.example.toptrump.view.adapter.UsuariosAdapter;
 import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
 
@@ -37,7 +39,8 @@ public class UsuaFragment extends Fragment {
 
     private ViewModel viewModelActivity;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private UsuariosAdapter adapter;
+    private static List<Usuario> usuarioLista;
 
 
     @Override
@@ -53,50 +56,34 @@ public class UsuaFragment extends Fragment {
         viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
 
         navigation(view);
-        //mostrarUsuarios(view);
-        //init(view);
+        init(view);
 
     }
 
-    /*private void mostrarUsuarios(View view) {
-        recyclerView = view.findViewById(R.id.rvamigos);
+    private void init(View view) {
+        recyclerView = view.findViewById(R.id.rvUsuarios);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AmigoRecyclerAdapter(amigo);
-        recyclerView.setAdapter(adapter);
+        adapter = new UsuariosAdapter(new UsuariosAdapter.AmigoDiff());
+
 
         viewModelActivity.getListaUsuarios().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>() {
             @Override
             public void onChanged(List<Usuario> usuarios) {
-                amigo.clear();
-                amigo.addAll(amigos);
-                adapter.notifyDataSetChanged();
-
-                lista.clear();
-                lista.addAll(amigos);
+                adapter.submitList(usuarios);
+                usuarioLista = usuarios;
             }
         });
-    }*/
 
-    /*private void init(View view) {
-        RecyclerView mi_recycler = view.findViewById(R.id.rvamigos);
-        mi_recycler.addOnItemTouchListener(new RecyclerItemClickListener(this,mi_recycler, new RecyclerItemClickListener.OnItemClickListener() {
+        recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                //Intent intent = new Intent(MainActivity.this, VerAmigo.class);
-                //intent.putExtra("objeto2",amigo.get(position).toString());
-                //startActivity(intent);
-            }
-
-            @Override
-            public void onLongItemClick(View view, int position) {
+            public void onClick(View v) {
 
             }
-        }));
-        mi_recycler.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AmigoRecyclerAdapter(amigo);
-        mi_recycler.setAdapter(adapter);
-    }*/
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(adapter);
+    }
 
     public void navigation(View view){
 

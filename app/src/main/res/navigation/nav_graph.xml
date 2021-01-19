@@ -9,7 +9,7 @@
         android:id="@+id/RegistFragment"
         android:name="com.example.toptrump.view.fragments.RegistFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_regist">
 
         <action
             android:id="@+id/action_FirstFragment_to_userFrament"

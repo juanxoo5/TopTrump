@@ -1,5 +1,6 @@
 package com.example.toptrump.view.adapter;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.ViewGroup;
 
@@ -13,7 +14,6 @@ public class UsuariosAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
 
     public UsuariosAdapter( @NonNull DiffUtil.ItemCallback<Usuario> diffCallback) {
         super(diffCallback);
-
     }
 
     @NonNull
