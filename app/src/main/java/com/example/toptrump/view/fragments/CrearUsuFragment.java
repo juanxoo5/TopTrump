@@ -62,7 +62,7 @@ public class CrearUsuFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_admin, menu);
+        inflater.inflate(R.menu.menu, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 

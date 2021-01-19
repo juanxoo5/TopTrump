@@ -61,7 +61,7 @@ public class AdmUsuaFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.menu_admin, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 
