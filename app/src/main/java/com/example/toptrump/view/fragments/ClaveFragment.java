@@ -2,6 +2,7 @@ package com.example.toptrump.view.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -61,11 +62,17 @@ public class ClaveFragment extends Fragment {
             @Override
             public void onClick(View view) {
                     // cuando tu ya tienes la clave y has pulsado "administración"
-                    if(texto.getText().toString().equals(comprobarClave)){
+                if(texto.getText().toString().isEmpty()) {
+                    Toast toast = Toast.makeText(view.getContext(), " No puede poner una contraseña vacía ", Toast.LENGTH_LONG);
+                    toast.getView().setBackgroundColor(Color.RED);
+                    toast.show();
+                } else if(texto.getText().toString().equals(comprobarClave)){
                         Toast.makeText(view.getContext(),"Clave verificada", Toast.LENGTH_LONG).show();
                         NavHostFragment.findNavController(ClaveFragment.this).navigate(R.id.action_claveFragment_to_adminFragment);
                     } else {
-                        control.setError("La clave es incorrecta");
+                        Toast toast = Toast.makeText(view.getContext()," La clave es incorrecta ", Toast.LENGTH_LONG);
+                        toast.getView().setBackgroundColor(Color.RED);
+                        toast.show();
                     }
             }
         });
