@@ -1,5 +1,7 @@
 package com.example.toptrump.view.fragments;
 
+import android.accounts.AccountManager;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,12 +24,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.toptrump.R;
 import com.example.toptrump.view.MainActivity;
+import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.common.AccountPicker;
 import com.google.android.material.navigation.NavigationView;
 
+import static android.app.Activity.RESULT_OK;
+
 public class PerfilFragment extends Fragment {
+    private static final int REQUEST_CODE_EMAIL = 1;
+    String accountName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,16 +56,27 @@ public class PerfilFragment extends Fragment {
         btCorreo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mensaje = "";
-                Log.v("XYZ",mensaje);
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","correo@gmail.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "TopTrump - Puntuaciones");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
-                startActivity(Intent.createChooser(emailIntent,  getActivity().getString(R.string.enviar_mail)));
+                try {
+                    Intent intent = AccountPicker.newChooseAccountIntent(null, null,
+                            new String[] { GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE }, false, null, null, null, null);
+                    startActivityForResult(intent, REQUEST_CODE_EMAIL);
+                } catch (ActivityNotFoundException e) { }
             }
         });
 
         NavController navController = new NavController(view.getContext());
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_EMAIL && resultCode == RESULT_OK) {
+            accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",accountName, null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "TopTrump - Puntuaciones");
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "¡Hola soy X y estoy jugando a TopTrump, tengo una puntuación de X, ven e intenta superarme!");
+            startActivity(Intent.createChooser(emailIntent,  getActivity().getString(R.string.enviar_mail)));
+        }
     }
 
     public void navigation(View view){
