@@ -36,6 +36,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
                 android:contentDescription="@string/imagen"
+                android:src="@drawable/ic_launcher_foreground"
                 app:layout_constraintBottom_toTopOf="@+id/etNombreUsuario"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
