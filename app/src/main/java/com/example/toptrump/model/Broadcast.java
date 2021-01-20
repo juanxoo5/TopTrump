@@ -13,7 +13,7 @@ public class Broadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Toast.makeText(context, "Battery's dying!!", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Top Trump - Batería baja, por favor conecte el cargador", Toast.LENGTH_LONG).show();
         Log.v("XYZ", "BATTERY LOW!!");
 
     }
