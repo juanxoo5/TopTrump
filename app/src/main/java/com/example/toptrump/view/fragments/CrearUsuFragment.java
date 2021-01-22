@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
@@ -48,13 +49,14 @@ public class CrearUsuFragment extends Fragment {
 
         navigation(view);
 
-        ImageButton ibtAvatar = view.findViewById(R.id.ibtAvatar);
+        Button btAvatar = view.findViewById(R.id.btAvatar);
         Button btGuardar = view.findViewById(R.id.btGuardar);
         EditText etNombre = view.findViewById(R.id.etNombreUsuario);
+        ImageView imgAvatar = view.findViewById(R.id.imgAvatar);
         
         NavController navController = new NavController(view.getContext());
 
-        ibtAvatar.setOnClickListener(new View.OnClickListener() {
+        btAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.avatarFragment);
@@ -66,7 +68,7 @@ public class CrearUsuFragment extends Fragment {
             public void onClick(View v) {
                 if(!etNombre.getText().toString().isEmpty()){
                     String nombreUsuario = etNombre.getText().toString();
-                    Usuario usuario = new Usuario(nombreUsuario,ibtAvatar.getImageAlpha(),0,0);
+                    Usuario usuario = new Usuario(nombreUsuario, imgAvatar.getImageAlpha(),0,0);
                     viewModelActivity.insert(usuario);
 
                     navController.navigate(R.id.admUsuaFragment);
