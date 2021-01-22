@@ -89,23 +89,8 @@ public class AdmUsuaFragment extends Fragment {
             }
         });
 
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-
-                builder.setMessage("Que desea hacer")
-                        .setTitle("");
-                builder.setPositiveButton("Editar usuario", null);
-                builder.setNegativeButton("Eliminar usuario", null);
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
-
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        //recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
