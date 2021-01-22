@@ -20,13 +20,13 @@ public class Usuario {
 
     @NonNull
     @ColumnInfo(name = "numRes")
-    private String numRes;
+    private int numRes;
 
     @NonNull
     @ColumnInfo(name = "resCor")
-    private String resCor;
+    private int resCor;
 
-    public Usuario(String nombre, int avatar, @NonNull String numRes, @NonNull String resCor) {
+    public Usuario(String nombre, int avatar, @NonNull int numRes, @NonNull int resCor) {
         this.nombre = nombre;
         this.avatar = avatar;
         this.numRes = numRes;
@@ -58,20 +58,20 @@ public class Usuario {
     }
 
     @NonNull
-    public String getNumRes() {
+    public int getNumRes() {
         return numRes;
     }
 
-    public void setNumRes(@NonNull String numRes) {
+    public void setNumRes(@NonNull int numRes) {
         this.numRes = numRes;
     }
 
     @NonNull
-    public String getResCor() {
+    public int getResCor() {
         return resCor;
     }
 
-    public void setResCor(@NonNull String resCor) {
+    public void setResCor(@NonNull int resCor) {
         this.resCor = resCor;
     }
 
