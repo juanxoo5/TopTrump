@@ -1,4 +1,4 @@
-package com.example.toptrump.view.adapter;
+package com.example.toptrump.view.adapter.Usuarios;
 
 import android.view.ViewGroup;
 
@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.toptrump.model.room.pojo.Usuario;
 
-public class AvatarAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
+public class UsuariosAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
 
-    public AvatarAdapter(@NonNull DiffUtil.ItemCallback<Usuario> diffCallback) {
+    public UsuariosAdapter( @NonNull DiffUtil.ItemCallback<Usuario> diffCallback) {
         super(diffCallback);
-
     }
 
     @NonNull
@@ -27,7 +26,7 @@ public class AvatarAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
         holder.bind(current.getNombre());
     }
 
-    public static class AmigoDiff extends DiffUtil.ItemCallback<Usuario> {
+    public static class UsuarioDiff extends DiffUtil.ItemCallback<Usuario> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Usuario oldItem, @NonNull Usuario newItem) {

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayoutAvatar"
-    tools:context=".AvatarFragment">
+    tools:context=".view.fragments.AvatarFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/CoordinatorLayout"

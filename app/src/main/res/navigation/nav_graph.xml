@@ -105,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/avatarFragment"
-        android:name="com.example.toptrump.AvatarFragment"
+        android:name="com.example.toptrump.view.fragments.AvatarFragment"
         android:label="fragment_avatar"
         tools:layout="@layout/fragment_avatar" />
 </navigation>

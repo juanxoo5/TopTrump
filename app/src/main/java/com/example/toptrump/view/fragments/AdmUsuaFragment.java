@@ -1,17 +1,6 @@
 package com.example.toptrump.view.fragments;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,11 +8,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.toptrump.R;
+import com.example.toptrump.model.room.pojo.Usuario;
 import com.example.toptrump.view.MainActivity;
+import com.example.toptrump.view.adapter.AdminUsu.AdminUsuAdapter;
+import com.example.toptrump.view.adapter.Usuarios.UsuariosAdapter;
+import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 public class AdmUsuaFragment extends Fragment {
+
+    private ViewModel viewModelActivity;
+    private RecyclerView recyclerView;
+    private AdminUsuAdapter adapter;
+    private static List<Usuario> usuarioLista;
+    private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,6 +52,7 @@ public class AdmUsuaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navigation(view);
+        init(view);
 
         NavController navController = new NavController(view.getContext());
 
@@ -58,6 +74,38 @@ public class AdmUsuaFragment extends Fragment {
         NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+    }
+
+    private void init(View view) {
+        recyclerView = view.findViewById(R.id.rvAdminUsur);
+        recyclerView.setHasFixedSize(true);
+        adapter = new AdminUsuAdapter(new AdminUsuAdapter.UsuarioDiff());
+
+        viewModelActivity.getListaUsuarios().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>() {
+            @Override
+            public void onChanged(List<Usuario> usuarios) {
+                //adapter.submitList(usuarios);
+                usuarioLista = usuarios;
+            }
+        });
+
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+
+                builder.setMessage("Que desea hacer")
+                        .setTitle("");
+                builder.setPositiveButton("Editar usuario", null);
+                builder.setNegativeButton("Eliminar usuario", null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        //recyclerView.setAdapter(adapter);
     }
 
     @Override

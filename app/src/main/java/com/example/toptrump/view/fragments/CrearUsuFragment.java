@@ -18,6 +18,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.toptrump.R;
 import com.example.toptrump.view.MainActivity;
@@ -37,8 +39,17 @@ public class CrearUsuFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navigation(view);
+
+        ImageButton ibtAvatar = view.findViewById(R.id.ibtAvatar);
         
         NavController navController = new NavController(view.getContext());
+
+        ibtAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.avatarFragment);
+            }
+        });
 
     }
 

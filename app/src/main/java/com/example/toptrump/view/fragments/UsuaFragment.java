@@ -1,11 +1,9 @@
 package com.example.toptrump.view.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -22,14 +20,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
 import com.example.toptrump.view.MainActivity;
-import com.example.toptrump.view.adapter.UsuariosAdapter;
+import com.example.toptrump.view.adapter.Usuarios.UsuariosAdapter;
 import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
 
@@ -41,6 +38,7 @@ public class UsuaFragment extends Fragment {
     private RecyclerView recyclerView;
     private UsuariosAdapter adapter;
     private static List<Usuario> usuarioLista;
+    private NavController navController;
 
 
     @Override
@@ -60,11 +58,28 @@ public class UsuaFragment extends Fragment {
 
     }
 
+    public void navigation(View view){
+
+        MainActivity mainActivity = (MainActivity) view.getContext();
+        Toolbar toolbar = view.findViewById(R.id.tbUsuariosFrgm);
+        mainActivity.setSupportActionBar(toolbar);
+
+        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutUsua);
+        NavigationView navigationView = view.findViewById(R.id.nav_view);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
+        AppBarConfiguration appBarConfiguration =
+                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
+        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
+    }
+
     private void init(View view) {
         recyclerView = view.findViewById(R.id.rvUsuarios);
         recyclerView.setHasFixedSize(true);
-        adapter = new UsuariosAdapter(new UsuariosAdapter.AmigoDiff());
-
+        adapter = new UsuariosAdapter(new UsuariosAdapter.UsuarioDiff());
 
         viewModelActivity.getListaUsuarios().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>() {
             @Override
@@ -77,30 +92,12 @@ public class UsuaFragment extends Fragment {
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                navController.navigate(R.id.juegoFragment);
             }
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(adapter);
-    }
-
-    public void navigation(View view){
-
-        MainActivity mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbUsuariosFrgm);
-        mainActivity.setSupportActionBar(toolbar);
-
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutUsua);
-        NavigationView navigationView = view.findViewById(R.id.nav_view);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
     }
 
     @Override

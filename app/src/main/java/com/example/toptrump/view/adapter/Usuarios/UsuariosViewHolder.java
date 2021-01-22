@@ -1,4 +1,4 @@
-package com.example.toptrump.view.adapter;
+package com.example.toptrump.view.adapter.Usuarios;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.toptrump.R;
 
-public class AvatarViewHolder extends RecyclerView.ViewHolder{
+public class UsuariosViewHolder extends RecyclerView.ViewHolder{
 
     private final TextView tvNombUsu;
 
-    public AvatarViewHolder(@NonNull View itemView) {
+    public UsuariosViewHolder(@NonNull View itemView) {
         super(itemView);
         this.tvNombUsu = itemView.findViewById(R.id.tvNombUsu);
     }
@@ -24,10 +24,10 @@ public class AvatarViewHolder extends RecyclerView.ViewHolder{
     public void bind(String text) {
         tvNombUsu.setText(text);
     }
-    static AvatarViewHolder create(ViewGroup parent) {
+    public static UsuariosViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_usuario, parent, false);
-        return new AvatarViewHolder(view);
+        return new UsuariosViewHolder(view);
     }
 
 }
