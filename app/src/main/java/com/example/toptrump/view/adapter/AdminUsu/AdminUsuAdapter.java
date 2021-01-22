@@ -1,5 +1,6 @@
 package com.example.toptrump.view.adapter.AdminUsu;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,12 @@ public class AdminUsuAdapter extends ListAdapter<Usuario, AdminUsuViewHolder> {
     public void onBindViewHolder(@NonNull AdminUsuViewHolder holder, int position) {
         Usuario current = getItem(position);
         holder.bind(current.getNombre());
+        holder.parent_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public static class UsuarioDiff extends DiffUtil.ItemCallback<Usuario> {

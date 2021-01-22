@@ -24,6 +24,7 @@ public class UsuariosAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
     public void onBindViewHolder(@NonNull UsuariosViewHolder holder, int position) {
         Usuario current = getItem(position);
         holder.bind(current.getNombre());
+        holder.
     }
 
     public static class UsuarioDiff extends DiffUtil.ItemCallback<Usuario> {
