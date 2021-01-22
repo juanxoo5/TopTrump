@@ -33,25 +33,25 @@
                 android:id="@+id/ibtAvatar"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:background="#FFFFFF"
                 android:contentDescription="@string/imagen"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/avatar"
                 app:layout_constraintBottom_toTopOf="@+id/guideline22"
                 app:layout_constraintEnd_toStartOf="@+id/guideline20"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
                 app:layout_constraintTop_toTopOf="@+id/guideline21"
-                app:layout_constraintVertical_bias="1.0"
-                tools:src="@tools:sample/avatars" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <EditText
                 android:id="@+id/etNombreUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/nombre"
                 android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/btGuardar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline22" />
@@ -75,14 +75,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.1" />
+                app:layout_constraintGuide_percent="0.25" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_percent="0.65" />
+
+            <Button
+                android:id="@+id/btGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/guardar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNombreUsuario" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pulsa_en_la_imagen_para_elegir_un_avatar"
+                app:layout_constraintBottom_toTopOf="@+id/ibtAvatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tbCrearUsuFrgm" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

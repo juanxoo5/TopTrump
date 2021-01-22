@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,13 +20,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.toptrump.R;
+import com.example.toptrump.model.room.pojo.Usuario;
 import com.example.toptrump.view.MainActivity;
+import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 public class CrearUsuFragment extends Fragment {
+
+    private ViewModel viewModelActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,10 +43,14 @@ public class CrearUsuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
+
 
         navigation(view);
 
         ImageButton ibtAvatar = view.findViewById(R.id.ibtAvatar);
+        Button btGuardar = view.findViewById(R.id.btGuardar);
+        EditText etNombre = view.findViewById(R.id.etNombreUsuario);
         
         NavController navController = new NavController(view.getContext());
 
@@ -48,6 +58,19 @@ public class CrearUsuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.avatarFragment);
+            }
+        });
+
+        btGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!etNombre.getText().toString().isEmpty()){
+                    String nombreUsuario = etNombre.getText().toString();
+                    Usuario usuario = new Usuario(nombreUsuario,ibtAvatar.getImageAlpha(),0,0);
+                    viewModelActivity.insert(usuario);
+
+                    navController.navigate(R.id.admUsuaFragment);
+                }
             }
         });
 

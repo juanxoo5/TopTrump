@@ -4,26 +4,84 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toptrump.R;
+import com.example.toptrump.model.room.pojo.Usuario;
+import com.example.toptrump.view.MainActivity;
+import com.example.toptrump.view.adapter.Usuarios.UsuariosAdapter;
+import com.example.toptrump.viewmodel.ViewModel;
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.List;
 
 public class AvatarFragment extends Fragment {
 
+    private ViewModel viewModelActivity;
+    private RecyclerView recyclerView;
+    private UsuariosAdapter adapter;
+    private static List<Usuario> ImagenLista;
+    private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_avatar, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navigation(view);
+        init(view);
+
+    }
+
+    public void navigation(View view){
+
+        MainActivity mainActivity = (MainActivity) view.getContext();
+        Toolbar toolbar = view.findViewById(R.id.tbUsuariosFrgm);
+        mainActivity.setSupportActionBar(toolbar);
+
+        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutUsua);
+        NavigationView navigationView = view.findViewById(R.id.nav_view);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
+        AppBarConfiguration appBarConfiguration =
+                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
+        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
+    }
+
+    private void init(View view) {
+        recyclerView = view.findViewById(R.id.rvAvatares);
+        recyclerView.setHasFixedSize(true);
+        adapter = new UsuariosAdapter(new UsuariosAdapter.UsuarioDiff());
+
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.juegoFragment);
+            }
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(adapter);
     }
 }
