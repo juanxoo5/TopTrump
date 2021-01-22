@@ -80,16 +80,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etNombreUsuario" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pulsa_en_la_imagen_para_elegir_un_avatar"
-                app:layout_constraintBottom_toTopOf="@+id/guideline21"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tbCrearUsuFrgm" />
-
             <ImageView
                 android:id="@+id/imgAvatar"
                 android:layout_width="0dp"

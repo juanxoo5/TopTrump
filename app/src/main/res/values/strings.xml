@@ -43,7 +43,6 @@
     <string name="elige_un_avatar">Elige un avatar</string>
     <string name="crearusuario">crearUsuario</string>
     <string name="enviar_mail">enviando email</string>
-    <string name="pulsa_en_la_imagen_para_elegir_un_avatar">Pulsa en la imagen para elegir un avatar</string>
     <string name="guardar">Guardar</string>
     <string name="cambiar_avatar">Cambiar avatar</string>
 </resources>
