@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -50,7 +51,7 @@ public class AdmUsuaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
         navigation(view);
         init(view);
 
@@ -84,7 +85,7 @@ public class AdmUsuaFragment extends Fragment {
         viewModelActivity.getListaUsuarios().observe(getViewLifecycleOwner(), new Observer<List<Usuario>>() {
             @Override
             public void onChanged(List<Usuario> usuarios) {
-                //adapter.submitList(usuarios);
+                adapter.submitList(usuarios);
                 usuarioLista = usuarios;
             }
         });

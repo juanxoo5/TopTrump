@@ -3,11 +3,14 @@ package com.example.toptrump.view;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
 import com.example.toptrump.R;
+import com.example.toptrump.model.Broadcast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -19,6 +22,8 @@ import android.util.Log;
 public class MainActivity extends AppCompatActivity {
 
     private final int PERMISO_PHONE_STATE = 1;
+    private IntentFilter bateriabaja;
+    private Broadcast bc;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -37,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bateriabaja = new IntentFilter();
+        bateriabaja.addAction(Intent.ACTION_BATTERY_LOW);
+        bc = new Broadcast();
+
         setContentView(R.layout.activity_main);
         obtenerPermisoTelefono();
     }
@@ -78,4 +87,15 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(bc,bateriabaja);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(bc);
+    }
 }
