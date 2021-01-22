@@ -14,6 +14,10 @@ import com.google.android.material.snackbar.Snackbar;
 public class Broadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+        String accion = intent.getAction();
+        if (accion.equals(Intent.ACTION_BATTERY_LOW)) {
+            Log.v("XYZ","batería baja");
+        }
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
 
