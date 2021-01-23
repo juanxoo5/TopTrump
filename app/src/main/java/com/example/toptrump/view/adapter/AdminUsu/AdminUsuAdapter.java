@@ -1,14 +1,21 @@
 package com.example.toptrump.view.adapter.AdminUsu;
 
+import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
+import com.example.toptrump.viewmodel.ViewModel;
 
 public class AdminUsuAdapter extends ListAdapter<Usuario, AdminUsuViewHolder> {
 
@@ -25,7 +32,7 @@ public class AdminUsuAdapter extends ListAdapter<Usuario, AdminUsuViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull AdminUsuViewHolder holder, int position) {
         Usuario current = getItem(position);
-        holder.bind(current.getNombre());
+        holder.bind(current.getNombre(), current.getAvatar());
         holder.parent_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,9 +40,35 @@ public class AdminUsuAdapter extends ListAdapter<Usuario, AdminUsuViewHolder> {
 
                 builder.setMessage("Que desea hacer")
                         .setTitle(current.getNombre());
-                builder.setPositiveButton("Editar usuario", null);
-                builder.setNeutralButton("Cancelar", null);
-                builder.setNegativeButton("Eliminar usuario", null);
+                builder.setPositiveButton("Editar usuario", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Bundle bundle = new Bundle();
+                        bundle.putLong("Id", current.getId());
+                        bundle.putString("Nombre", current.getNombre());
+                        bundle.putInt("Avatar", current.getAvatar());
+                        bundle.putInt("NumResp", current.getNumRes());
+                        bundle.putInt("RespCor", current.getResCor());
+
+                        NavController navController = Navigation.findNavController(v);
+                        navController.navigate(R.id.editUsuaFragment, bundle);
+                    }
+                });
+                builder.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                });
+                builder.setNegativeButton("Eliminar usuario", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        //ViewModel viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
+
+                    }
+                });
 
                 AlertDialog dialog = builder.create();
                 dialog.show();

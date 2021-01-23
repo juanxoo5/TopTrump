@@ -89,13 +89,6 @@ public class UsuaFragment extends Fragment {
             }
         });
 
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.juegoFragment);
-            }
-        });
-
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(adapter);
     }

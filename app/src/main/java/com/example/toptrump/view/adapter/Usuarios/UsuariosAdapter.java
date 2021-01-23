@@ -1,5 +1,6 @@
 package com.example.toptrump.view.adapter.Usuarios;
 
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,7 +28,20 @@ public class UsuariosAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull UsuariosViewHolder holder, int position) {
         Usuario current = getItem(position);
-        holder.bind(current.getNombre());
+        holder.bind(current.getNombre(), current.getAvatar());
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", current.getNombre());
+                bundle.putInt("Avatar", current.getAvatar());
+                bundle.putInt("NumResp", current.getNumRes());
+                bundle.putInt("RespCor", current.getResCor());
+
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.crearUsuaFragment, bundle);
+            }
+        });
     }
 
     public static class UsuarioDiff extends DiffUtil.ItemCallback<Usuario> {

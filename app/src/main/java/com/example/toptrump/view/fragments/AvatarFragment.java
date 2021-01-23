@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import android.view.ViewGroup;
 import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
 import com.example.toptrump.view.MainActivity;
+import com.example.toptrump.view.adapter.Avatar.AvatarAdapter;
 import com.example.toptrump.view.adapter.Usuarios.UsuariosAdapter;
 import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
@@ -32,9 +34,14 @@ public class AvatarFragment extends Fragment {
 
     private ViewModel viewModelActivity;
     private RecyclerView recyclerView;
-    private UsuariosAdapter adapter;
+    private AvatarAdapter adapter;
     private static List<Usuario> ImagenLista;
     private NavController navController;
+    private int[] sliderImagesId = new int[]{
+            R.drawable.avatar, R.drawable.chicobasura, R.drawable.chicocalvo,
+            R.drawable.chicoelegante, R.drawable.chicahipster, R.drawable.chicainteligente,
+            R.drawable.chicarubia
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,10 +61,10 @@ public class AvatarFragment extends Fragment {
     public void navigation(View view){
 
         MainActivity mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbUsuariosFrgm);
+        Toolbar toolbar = view.findViewById(R.id.tbAvatarFrgm);
         mainActivity.setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutUsua);
+        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutAvatar);
         NavigationView navigationView = view.findViewById(R.id.nav_view);
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
@@ -70,18 +77,11 @@ public class AvatarFragment extends Fragment {
     }
 
     private void init(View view) {
+
         recyclerView = view.findViewById(R.id.rvAvatares);
         recyclerView.setHasFixedSize(true);
-        adapter = new UsuariosAdapter(new UsuariosAdapter.UsuarioDiff());
-
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.juegoFragment);
-            }
-        });
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        adapter = new AvatarAdapter(sliderImagesId);
         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
     }
 }

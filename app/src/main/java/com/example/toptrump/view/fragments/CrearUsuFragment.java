@@ -54,7 +54,7 @@ public class CrearUsuFragment extends Fragment {
         EditText etNombre = view.findViewById(R.id.etNombreUsuario);
         ImageView imgAvatar = view.findViewById(R.id.imgAvatar);
         
-        NavController navController = new NavController(view.getContext());
+        NavController navController = Navigation.findNavController(view);
 
         btAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class CrearUsuFragment extends Fragment {
             public void onClick(View v) {
                 if(!etNombre.getText().toString().isEmpty()){
                     String nombreUsuario = etNombre.getText().toString();
-                    Usuario usuario = new Usuario(nombreUsuario, imgAvatar.getImageAlpha(),0,0);
+                    Usuario usuario = new Usuario(nombreUsuario, imgAvatar.getId(),0,0);
                     viewModelActivity.insert(usuario);
 
                     navController.navigate(R.id.admUsuaFragment);

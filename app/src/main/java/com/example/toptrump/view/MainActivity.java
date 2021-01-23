@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,4 +99,11 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         unregisterReceiver(bc);
     }
+
+    public View.OnClickListener botones = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 }

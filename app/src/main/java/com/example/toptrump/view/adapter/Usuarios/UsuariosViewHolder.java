@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,18 +15,21 @@ import com.example.toptrump.R;
 
 public class UsuariosViewHolder extends RecyclerView.ViewHolder{
 
+    private final ImageView avatar;
     private final TextView tvNombUsu;
     public final ConstraintLayout layout;
 
     public UsuariosViewHolder(@NonNull View itemView) {
         super(itemView);
+        this.avatar = itemView.findViewById(R.id.imgUsu);
         this.tvNombUsu = itemView.findViewById(R.id.tvNombUsu);
         this.layout = itemView.findViewById(R.id.ConstraintLayoutItem);
     }
 
     @SuppressLint("ResourceType")
-    public void bind(String text) {
+    public void bind(String text, int avatar) {
         tvNombUsu.setText(text);
+        this.avatar.setImageResource(avatar);
     }
     public static UsuariosViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())

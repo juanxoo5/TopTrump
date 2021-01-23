@@ -1,43 +1,74 @@
 package com.example.toptrump.view.adapter.Avatar;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
 
-public class AvatarAdapter extends ListAdapter<Usuario, AvatarViewHolder> {
+import java.lang.reflect.Array;
 
-    public AvatarAdapter(@NonNull DiffUtil.ItemCallback<Usuario> diffCallback) {
-        super(diffCallback);
+public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarViewHolder> {
+
+    private int[] avatares;
+
+    public AvatarAdapter(int[] avatares) {
+        this.avatares = avatares;
 
     }
 
     @NonNull
     @Override
     public AvatarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return AvatarViewHolder.create(parent);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_avatares, parent, false);
+        AvatarViewHolder holder = new AvatarViewHolder(vista);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull AvatarViewHolder holder, int position) {
-        Usuario current = getItem(position);
-        holder.bind(current.getNombre());
+
+        holder.avatar.setImageResource(avatares[position]);
+        holder.parent_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("Imagen", avatares[position]);
+
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.crearUsuaFragment, bundle);
+            }
+        });
     }
 
-    public static class AvatarDiff extends DiffUtil.ItemCallback<Usuario> {
-
-        @Override
-        public boolean areItemsTheSame(@NonNull Usuario oldItem, @NonNull Usuario newItem) {
-            return oldItem == newItem;
-        }
-
-        @Override
-        public boolean areContentsTheSame(@NonNull Usuario oldItem, @NonNull Usuario newItem) {
-            return oldItem.getNombre().equals(newItem.getNombre());
-        }
+    @Override
+    public int getItemCount() {
+        return avatares.length;
     }
 
+    public class AvatarViewHolder extends RecyclerView.ViewHolder{
+
+        public ImageView avatar;
+        public ConstraintLayout parent_layout;
+
+        public AvatarViewHolder(@NonNull View itemView) {
+            super(itemView);
+            this.avatar = itemView.findViewById(R.id.imgListAvatar);
+            parent_layout = itemView.findViewById(R.id.parent_layout);
+        }
+
+    }
 }
