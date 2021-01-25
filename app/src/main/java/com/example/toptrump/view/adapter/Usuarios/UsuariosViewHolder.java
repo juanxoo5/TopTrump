@@ -1,6 +1,7 @@
 package com.example.toptrump.view.adapter.Usuarios;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +28,10 @@ public class UsuariosViewHolder extends RecyclerView.ViewHolder{
     }
 
     @SuppressLint("ResourceType")
-    public void bind(String text, int avatar) {
+    public void bind(String text, int avatares) {
         tvNombUsu.setText(text);
-        this.avatar.setImageResource(avatar);
+        avatar.setImageResource(avatares);
+
     }
     public static UsuariosViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())

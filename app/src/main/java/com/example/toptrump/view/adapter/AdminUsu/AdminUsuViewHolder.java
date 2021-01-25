@@ -27,9 +27,9 @@ public class AdminUsuViewHolder extends RecyclerView.ViewHolder {
     }
 
     @SuppressLint("ResourceType")
-    public void bind(String text, int avatar) {
+    public void bind(String text, int avatares) {
         tvNombUsu.setText(text);
-        this.avatar.setImageResource(avatar);
+        avatar.setImageResource(avatares);
     }
     public static AdminUsuViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())

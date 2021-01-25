@@ -2,9 +2,11 @@ package com.example.toptrump.view.adapter.AdminUsu;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -67,6 +69,8 @@ public class AdminUsuAdapter extends ListAdapter<Usuario, AdminUsuViewHolder> {
                 builder.setNegativeButton("Eliminar usuario", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
+                        Toast toast = Toast.makeText(v.getContext(),"El usuario ha sido eliminado", Toast.LENGTH_LONG);
+                        toast.show();
                         viewModelActivity.deleteUsuario(current.getId());
                     }
                 });

@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,6 +34,8 @@ import com.google.android.material.navigation.NavigationView;
 public class CrearUsuFragment extends Fragment {
 
     private ViewModel viewModelActivity;
+    Bundle bundle;
+    int avatar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +48,11 @@ public class CrearUsuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
+        try {
+            avatar = getArguments().getInt("Imagen");
+        } catch( NullPointerException e){
 
+        }
 
         navigation(view);
 
@@ -53,7 +60,15 @@ public class CrearUsuFragment extends Fragment {
         Button btGuardar = view.findViewById(R.id.btGuardar);
         EditText etNombre = view.findViewById(R.id.etNombreUsuario);
         ImageView imgAvatar = view.findViewById(R.id.imgAvatar);
-        
+        String avatares = String.valueOf(avatar);
+        if(avatares.equals("0")){
+            imgAvatar.setImageResource(R.drawable.avatar);
+            Log.v("XYZ" ,"" +  avatar);
+        } else {
+            imgAvatar.setImageResource(avatar);
+            Log.v("XYZ" ,"" +  avatar);
+        }
+
         NavController navController = Navigation.findNavController(view);
 
         btAvatar.setOnClickListener(new View.OnClickListener() {
@@ -68,10 +83,13 @@ public class CrearUsuFragment extends Fragment {
             public void onClick(View v) {
                 if(!etNombre.getText().toString().isEmpty()){
                     String nombreUsuario = etNombre.getText().toString();
-                    Usuario usuario = new Usuario(nombreUsuario, imgAvatar.getId(),0,0);
+                    Usuario usuario = new Usuario(nombreUsuario, avatar,0,0);
+                    Log.v("XYZ" ,"" +  avatar);
                     viewModelActivity.insert(usuario);
 
                     navController.navigate(R.id.admUsuaFragment);
+                } else {
+                    etNombre.setError("Este campo no puede quedar vacío");
                 }
             }
         });
