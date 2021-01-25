@@ -19,6 +19,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.toptrump.R;
 import com.example.toptrump.view.MainActivity;
@@ -37,9 +40,24 @@ public class EditUsuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Button btEditar = view.findViewById(R.id.btEditar);
+        ImageView imageView = view.findViewById(R.id.imgAvatar2);
+        EditText etEditNomb = view.findViewById(R.id.etEditNombreUsuario);
+
+        Bundle bundle = new Bundle();
+
+        Long id = bundle.getLong("Id");
+        String nombre = bundle.getString("Nombre");
+        int avatar = bundle.getInt("Avatar");
+        int numResp = bundle.getInt("NumResp");
+        int respCorrecta = bundle.getInt("RespCor");
+
         navigation(view);
 
         NavController navController = new NavController(view.getContext());
+
+        etEditNomb.setText(nombre);
+        imageView.setImageResource(avatar);
 
     }
 
