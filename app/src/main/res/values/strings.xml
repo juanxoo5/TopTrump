@@ -45,4 +45,5 @@
     <string name="enviar_mail">enviando email</string>
     <string name="guardar">Guardar</string>
     <string name="cambiar_avatar">Cambiar avatar</string>
+    <string name="editar">Editar</string>
 </resources>
