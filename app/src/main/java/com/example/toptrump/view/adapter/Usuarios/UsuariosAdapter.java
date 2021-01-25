@@ -39,7 +39,7 @@ public class UsuariosAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
                 bundle.putInt("RespCor", current.getResCor());
 
                 NavController navController = Navigation.findNavController(v);
-                navController.navigate(R.id.crearUsuaFragment, bundle);
+                navController.navigate(R.id.juegoFragment, bundle);
             }
         });
     }

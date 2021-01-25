@@ -46,11 +46,11 @@ public class EditUsuFragment extends Fragment {
 
         Bundle bundle = new Bundle();
 
-        Long id = bundle.getLong("Id");
-        String nombre = bundle.getString("Nombre");
-        int avatar = bundle.getInt("Avatar");
-        int numResp = bundle.getInt("NumResp");
-        int respCorrecta = bundle.getInt("RespCor");
+        Long id = getArguments().getLong("Id");
+        String nombre = getArguments().getString("Nombre");
+        int avatar = getArguments().getInt("Avatar");
+        int numResp = getArguments().getInt("NumResp");
+        int respCorrecta = getArguments().getInt("RespCor");
 
         navigation(view);
 
@@ -58,6 +58,12 @@ public class EditUsuFragment extends Fragment {
 
         etEditNomb.setText(nombre);
         imageView.setImageResource(avatar);
+        btEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
