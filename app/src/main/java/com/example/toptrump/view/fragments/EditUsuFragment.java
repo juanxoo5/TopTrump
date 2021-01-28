@@ -15,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +36,7 @@ public class EditUsuFragment extends Fragment {
 
     ViewModel viewmodel;
     Usuario usuario;
+    EditText etnombre;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,33 +49,37 @@ public class EditUsuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewmodel = new ViewModelProvider(this).get(ViewModel.class);
+
         Button btEditar = view.findViewById(R.id.btEditar);
         Button btEditarAvatar = view.findViewById(R.id.btEditarAvatar);
         ImageView imageView = view.findViewById(R.id.imgAvatar2);
-        EditText etEditNomb = view.findViewById(R.id.etEditNombreUsuario);
+        etnombre = view.findViewById(R.id.etEditNombreUsuario);
 
         Bundle bundle = new Bundle();
 
         Long id = getArguments().getLong("Id");
         String nombre = getArguments().getString("Nombre");
+        etnombre.setText(nombre);
+
         int avatar = getArguments().getInt("Avatar");
         int numResp = getArguments().getInt("NumResp");
         int respCorrecta = getArguments().getInt("RespCor");
 
-        usuario = new Usuario(nombre,avatar,numResp,respCorrecta);
-        usuario.setId(id);
 
         navigation(view);
 
         NavController navController = new NavController(view.getContext());
 
-        etEditNomb.setText(nombre);
         imageView.setImageResource(avatar);
         btEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String nombreGuardado = etnombre.getText().toString();
+                usuario = new Usuario(nombreGuardado,avatar,numResp,respCorrecta);
+                usuario.setId(id);
+                Log.v("XYZ",usuario.toString());
                 viewmodel.updateUsuario(usuario);
-                NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_admUserFragment_to_editUsuFragment);
+                NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_editUsuaFragment_to_admUsuaFragment);
             }
         });
 

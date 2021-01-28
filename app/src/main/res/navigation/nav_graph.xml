@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_editUsuaFragment_to_editAvatarFragment"
             app:destination="@id/editAvatarFragment" />
+        <action
+            android:id="@+id/action_editUsuaFragment_to_admUsuaFragment"
+            app:destination="@id/admUsuaFragment" />
     </fragment>
     <fragment
         android:id="@+id/claveFragment"
