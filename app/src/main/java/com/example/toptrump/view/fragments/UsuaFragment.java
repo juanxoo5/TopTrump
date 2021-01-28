@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -108,6 +109,7 @@ public class UsuaFragment extends Fragment {
             public void onChanged(List<Usuario> usuarios) {
                 adapter.submitList(usuarios);
                 usuarioLista = usuarios;
+                Log.v("XYZ",usuarioLista.toString());
             }
         });
 

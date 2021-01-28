@@ -37,6 +37,7 @@ public class EditUsuFragment extends Fragment {
     ViewModel viewmodel;
     Usuario usuario;
     EditText etnombre;
+    int avatar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +51,7 @@ public class EditUsuFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewmodel = new ViewModelProvider(this).get(ViewModel.class);
 
+
         Button btEditar = view.findViewById(R.id.btEditar);
         Button btEditarAvatar = view.findViewById(R.id.btEditarAvatar);
         ImageView imageView = view.findViewById(R.id.imgAvatar2);
@@ -61,7 +63,9 @@ public class EditUsuFragment extends Fragment {
         String nombre = getArguments().getString("Nombre");
         etnombre.setText(nombre);
 
-        int avatar = getArguments().getInt("Avatar");
+        try {
+            avatar = getArguments().getInt("Imagen");
+        } catch( NullPointerException e){ }
         int numResp = getArguments().getInt("NumResp");
         int respCorrecta = getArguments().getInt("RespCor");
 
@@ -75,11 +79,22 @@ public class EditUsuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String nombreGuardado = etnombre.getText().toString();
-                usuario = new Usuario(nombreGuardado,avatar,numResp,respCorrecta);
-                usuario.setId(id);
-                Log.v("XYZ",usuario.toString());
-                viewmodel.updateUsuario(usuario);
-                NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_editUsuaFragment_to_admUsuaFragment);
+                if(nombreGuardado.isEmpty()){
+                    etnombre.setError("Este campo no puede estar vacío");
+                } else {
+                    usuario = new Usuario(nombreGuardado, avatar, numResp, respCorrecta);
+                    usuario.setId(id);
+                    Log.v("XYZ", usuario.toString());
+                    viewmodel.updateUsuario(usuario);
+                    NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_editUsuaFragment_to_admUsuaFragment);
+                }
+            }
+        });
+
+        btEditarAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_editUsuaFragment_to_editAvatarFragment);
             }
         });
 
