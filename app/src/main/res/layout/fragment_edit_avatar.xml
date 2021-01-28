@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayoutAvatar"
-    tools:context=".view.fragments.AvatarFragment">
+    android:id="@+id/drawerLayoutEditAvatar"
+    tools:context=".view.fragments.EditAvatarFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/CoordinatorLayout"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tbAvatarFrgm"
+                android:id="@+id/tbEditAvatarFrgm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
@@ -30,25 +30,25 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvCrearAvatar"
+                android:id="@+id/tvEditAvatar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="24dp"
                 android:text="@string/elige_un_avatar"
-                app:layout_constraintBottom_toTopOf="@+id/rvAvatares"
+                app:layout_constraintBottom_toTopOf="@+id/rvEditAvatares"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tbAvatarFrgm" />
+                app:layout_constraintTop_toBottomOf="@+id/tbEditAvatarFrgm" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAvatares"
+                android:id="@+id/rvEditAvatares"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvCrearAvatar" />
+                app:layout_constraintTop_toBottomOf="@id/tvEditAvatar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

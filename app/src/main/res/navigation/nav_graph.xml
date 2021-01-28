@@ -93,7 +93,11 @@
         android:id="@+id/editUsuaFragment"
         android:name="com.example.toptrump.view.fragments.EditUsuFragment"
         android:label="fragment_edit_usu"
-        tools:layout="@layout/fragment_edit_usu" />
+        tools:layout="@layout/fragment_edit_usu" >
+        <action
+            android:id="@+id/action_editUsuaFragment_to_editAvatarFragment"
+            app:destination="@id/editAvatarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/claveFragment"
         android:name="com.example.toptrump.view.fragments.ClaveFragment"
@@ -107,5 +111,18 @@
         android:id="@+id/avatarFragment"
         android:name="com.example.toptrump.view.fragments.AvatarFragment"
         android:label="fragment_avatar"
-        tools:layout="@layout/fragment_avatar" />
+        tools:layout="@layout/fragment_avatar" >
+        <action
+            android:id="@+id/action_avatarFragment_to_crearUsuaFragment"
+            app:destination="@id/crearUsuaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAvatarFragment"
+        android:name="com.example.toptrump.view.fragments.EditAvatarFragment"
+        android:label="fragment_edit_avatar"
+        tools:layout="@layout/fragment_edit_avatar" >
+        <action
+            android:id="@+id/action_editAvatarFragment_to_editUsuaFragment"
+            app:destination="@id/editUsuaFragment" />
+    </fragment>
 </navigation>
