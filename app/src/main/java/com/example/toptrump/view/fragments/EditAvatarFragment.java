@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -70,7 +71,28 @@ public class EditAvatarFragment extends Fragment {
                 new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
         NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.claveFragment:
+                        navController.navigate(R.id.claveFragment);
+                        return true;
+                    case R.id.juegoFragment:
+                        if(!mainActivity.usuarioActivo.isEmpty()){
+                            navController.navigate(R.id.juegoFragment);
+                        }
+                        return true;
+                    case R.id.perfilFragment:
+                        if(!mainActivity.usuarioActivo.isEmpty()){
+                            navController.navigate(R.id.perfilFragment);
+                        }
+                        return true;
+                }
+                return true;
+            }
+
+        });
 
     }
 

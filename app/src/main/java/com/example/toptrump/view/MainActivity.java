@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private final int PERMISO_PHONE_STATE = 1;
     private IntentFilter bateriabaja;
     private Broadcast bc;
-    List<Usuario> usuarioActivo = DataHolder.getInstance().usuarioactivo;
+    public List<Usuario> usuarioActivo = DataHolder.getInstance().usuarioactivo;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

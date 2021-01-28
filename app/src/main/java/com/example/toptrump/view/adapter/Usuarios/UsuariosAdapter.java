@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
+import com.example.toptrump.view.MainActivity;
 
 public class UsuariosAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
 
@@ -32,14 +33,15 @@ public class UsuariosAdapter extends ListAdapter<Usuario, UsuariosViewHolder> {
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("Nombre", current.getNombre());
-                bundle.putInt("Avatar", current.getAvatar());
-                bundle.putInt("NumResp", current.getNumRes());
-                bundle.putInt("RespCor", current.getResCor());
+                MainActivity mainActivity = (MainActivity) v.getContext();
+                if (!mainActivity.usuarioActivo.isEmpty()) {
+                    mainActivity.usuarioActivo.clear();
+                }
+
+                mainActivity.usuarioActivo.add(current);
 
                 NavController navController = Navigation.findNavController(v);
-                navController.navigate(R.id.juegoFragment, bundle);
+                navController.navigate(R.id.juegoFragment);
             }
         });
     }
