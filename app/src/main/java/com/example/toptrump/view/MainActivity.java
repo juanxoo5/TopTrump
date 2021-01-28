@@ -11,6 +11,8 @@ import android.os.Bundle;
 
 import com.example.toptrump.R;
 import com.example.toptrump.model.Broadcast;
+import com.example.toptrump.model.DataHolder.DataHolder;
+import com.example.toptrump.model.room.pojo.Usuario;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -20,11 +22,14 @@ import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private final int PERMISO_PHONE_STATE = 1;
     private IntentFilter bateriabaja;
     private Broadcast bc;
+    List<Usuario> usuarioActivo = DataHolder.getInstance().usuarioactivo;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

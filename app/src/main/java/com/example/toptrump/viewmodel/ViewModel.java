@@ -55,6 +55,7 @@ public class ViewModel extends AndroidViewModel {
     public void deleteUsuario(long id) {
         repository.deleteUsuario(id);
     }
-
-    // faltan updates
+    public void updateUsuario(Usuario usuario){
+        repository.updateUsuario(usuario);
+    }
 }

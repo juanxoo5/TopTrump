@@ -123,6 +123,13 @@ public class Repository {
     }
 
     // faltan updates
-
+    public void updateUsuario(Usuario usuario){
+        new Thread(){
+            @Override
+            public void run() {
+                usuarioDao.update(usuario);
+            }
+        }.start();
+    }
 
 }

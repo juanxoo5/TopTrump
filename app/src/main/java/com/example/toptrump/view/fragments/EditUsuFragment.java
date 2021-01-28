@@ -8,8 +8,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -24,10 +26,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.toptrump.R;
+import com.example.toptrump.model.room.pojo.Usuario;
 import com.example.toptrump.view.MainActivity;
+import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 public class EditUsuFragment extends Fragment {
+
+    ViewModel viewmodel;
+    Usuario usuario;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +46,7 @@ public class EditUsuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        viewmodel = new ViewModelProvider(this).get(ViewModel.class);
         Button btEditar = view.findViewById(R.id.btEditar);
         Button btEditarAvatar = view.findViewById(R.id.btEditarAvatar);
         ImageView imageView = view.findViewById(R.id.imgAvatar2);
@@ -53,6 +60,9 @@ public class EditUsuFragment extends Fragment {
         int numResp = getArguments().getInt("NumResp");
         int respCorrecta = getArguments().getInt("RespCor");
 
+        usuario = new Usuario(nombre,avatar,numResp,respCorrecta);
+        usuario.setId(id);
+
         navigation(view);
 
         NavController navController = new NavController(view.getContext());
@@ -62,7 +72,8 @@ public class EditUsuFragment extends Fragment {
         btEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                viewmodel.updateUsuario(usuario);
+                NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_admUserFragment_to_editUsuFragment);
             }
         });
 

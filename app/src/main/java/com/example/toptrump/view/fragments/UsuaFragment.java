@@ -41,6 +41,7 @@ public class UsuaFragment extends Fragment {
     private NavController navController;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
