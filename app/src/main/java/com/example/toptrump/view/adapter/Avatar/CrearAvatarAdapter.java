@@ -1,31 +1,24 @@
 package com.example.toptrump.view.adapter.Avatar;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.toptrump.R;
-import com.example.toptrump.model.room.pojo.Usuario;
 
-import java.lang.reflect.Array;
-
-public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarViewHolder> {
+public class CrearAvatarAdapter extends RecyclerView.Adapter<CrearAvatarAdapter.AvatarViewHolder> {
 
     private int[] avatares;
 
-    public AvatarAdapter(int[] avatares) {
+    public CrearAvatarAdapter(int[] avatares) {
         this.avatares = avatares;
 
     }

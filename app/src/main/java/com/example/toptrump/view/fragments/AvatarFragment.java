@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -15,7 +14,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +21,7 @@ import android.view.ViewGroup;
 import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Usuario;
 import com.example.toptrump.view.MainActivity;
-import com.example.toptrump.view.adapter.Avatar.AvatarAdapter;
-import com.example.toptrump.view.adapter.Usuarios.UsuariosAdapter;
+import com.example.toptrump.view.adapter.Avatar.CrearAvatarAdapter;
 import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
 
@@ -34,7 +31,7 @@ public class AvatarFragment extends Fragment {
 
     private ViewModel viewModelActivity;
     private RecyclerView recyclerView;
-    private AvatarAdapter adapter;
+    private CrearAvatarAdapter adapter;
     private static List<Usuario> ImagenLista;
     private NavController navController;
     private int[] sliderImagesId = new int[]{
@@ -80,7 +77,7 @@ public class AvatarFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.rvAvatares);
         recyclerView.setHasFixedSize(true);
-        adapter = new AvatarAdapter(sliderImagesId);
+        adapter = new CrearAvatarAdapter(sliderImagesId);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
     }

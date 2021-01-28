@@ -42,7 +42,7 @@ public class AdminUsuAdapter extends ListAdapter<Usuario, AdminUsuViewHolder> {
         holder.parent_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModelActivity = new ViewModelProvider((ViewModelStoreOwner) AdminUsuAdapter.this).get(ViewModel.class);
+                viewModelActivity = new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(ViewModel.class);
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
 
                 builder.setMessage("Que desea hacer")

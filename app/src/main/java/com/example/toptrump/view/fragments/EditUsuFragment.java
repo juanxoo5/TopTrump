@@ -41,6 +41,7 @@ public class EditUsuFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btEditar = view.findViewById(R.id.btEditar);
+        Button btEditarAvatar = view.findViewById(R.id.btEditarAvatar);
         ImageView imageView = view.findViewById(R.id.imgAvatar2);
         EditText etEditNomb = view.findViewById(R.id.etEditNombreUsuario);
 
