@@ -23,6 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.toptrump.R;
@@ -35,7 +37,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class PerfilFragment extends Fragment {
     private static final int REQUEST_CODE_EMAIL = 1;
-    String accountName;
+    private String accountName;
+    private MainActivity mainActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,7 +53,16 @@ public class PerfilFragment extends Fragment {
 
         navigation(view);
 
+        ImageView imageView = view.findViewById(R.id.UserProfileImage);
+        TextView tvNombre = view.findViewById(R.id.UserProfileName);
+        TextView tvResp = view.findViewById(R.id.UserQuestions);
+        TextView tvRespCorrect = view.findViewById(R.id.UserQuestionsCorrect);
         Button btCorreo = view.findViewById(R.id.btEnvPunctuation);
+
+        imageView.setImageResource(mainActivity.usuarioActivo.get(0).getAvatar());
+        tvNombre.setText(mainActivity.usuarioActivo.get(0).getNombre());
+        tvResp.setText(String.valueOf(mainActivity.usuarioActivo.get(0).getNumRes()));
+        tvRespCorrect.setText(String.valueOf(mainActivity.usuarioActivo.get(0).getResCor()));
 
         btCorreo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +92,7 @@ public class PerfilFragment extends Fragment {
 
     public void navigation(View view){
 
-        MainActivity mainActivity = (MainActivity) view.getContext();
+        mainActivity = (MainActivity) view.getContext();
         Toolbar toolbar = view.findViewById(R.id.tbPerfilFrgm);
         mainActivity.setSupportActionBar(toolbar);
 
