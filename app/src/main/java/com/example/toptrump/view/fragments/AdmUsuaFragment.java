@@ -91,8 +91,10 @@ public class AdmUsuaFragment extends Fragment {
                         }
                         return true;
                     case R.id.perfilFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_SHORT).show();
+                        if(mainActivity.usuarioActivo.isEmpty()){
+                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
+                            toast.getView().setBackgroundColor(Color.RED);
+                            toast.show();
                         } else {
                             navController.navigate(R.id.perfilFragment);
                         }

@@ -3,6 +3,7 @@ package com.example.toptrump.view.fragments;
 import android.accounts.AccountManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -103,14 +104,18 @@ public class PerfilFragment extends Fragment {
                         if(!mainActivity.usuarioActivo.isEmpty()){
                             navController.navigate(R.id.juegoFragment);
                         }else {
-                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_LONG).show();
+                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
+                            toast.getView().setBackgroundColor(Color.RED);
+                            toast.show();
                         }
                         return true;
                     case R.id.perfilFragment:
                         if(!mainActivity.usuarioActivo.isEmpty()){
                             navController.navigate(R.id.perfilFragment);
                         }else {
-                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_LONG).show();
+                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
+                            toast.getView().setBackgroundColor(Color.RED);
+                            toast.show();
                         }
                         return true;
                 }

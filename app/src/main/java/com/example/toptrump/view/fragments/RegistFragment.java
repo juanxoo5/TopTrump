@@ -70,7 +70,7 @@ public class RegistFragment extends Fragment {
                     clave = texto.getText().toString();
                     if(clave.isEmpty()){
                         // control de errores (preguntar) y json
-                        Toast toast = Toast.makeText(view.getContext()," No puede poner una contraseña vacía ", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(view.getContext()," No puede poner una contraseña vacía ", Toast.LENGTH_SHORT);
                         toast.getView().setBackgroundColor(Color.RED);
                         toast.show();
 
@@ -82,7 +82,7 @@ public class RegistFragment extends Fragment {
                         editor.putString("clave", clave);
                         editor.commit();
 
-                        Toast.makeText(view.getContext(),"Su clave ha sido guardada", Toast.LENGTH_LONG).show();
+                        Toast.makeText(view.getContext(),"Su clave ha sido guardada", Toast.LENGTH_SHORT).show();
                         NavHostFragment.findNavController(RegistFragment.this).navigate(R.id.action_FirstFragment_to_adminFragment);
                     }
             }
