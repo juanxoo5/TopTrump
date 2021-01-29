@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.toptrump.R;
 import com.example.toptrump.view.MainActivity;
@@ -64,11 +65,15 @@ public class JuegoFragment extends Fragment {
                     case R.id.juegoFragment:
                         if(!mainActivity.usuarioActivo.isEmpty()){
                             navController.navigate(R.id.juegoFragment);
+                        }else {
+                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_LONG).show();
                         }
                         return true;
                     case R.id.perfilFragment:
                         if(!mainActivity.usuarioActivo.isEmpty()){
                             navController.navigate(R.id.perfilFragment);
+                        }else {
+                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_LONG).show();
                         }
                         return true;
                 }
