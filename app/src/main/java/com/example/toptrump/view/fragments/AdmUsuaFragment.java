@@ -1,6 +1,8 @@
 package com.example.toptrump.view.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -85,14 +87,14 @@ public class AdmUsuaFragment extends Fragment {
                         if(!mainActivity.usuarioActivo.isEmpty()){
                             navController.navigate(R.id.juegoFragment);
                         }else {
-                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_LONG).show();
+                            navController.navigate(R.id.usuaFragment);
                         }
                         return true;
                     case R.id.perfilFragment:
                         if(!mainActivity.usuarioActivo.isEmpty()){
+                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_SHORT).show();
+                        } else {
                             navController.navigate(R.id.perfilFragment);
-                        }else {
-                            Toast.makeText(view.getContext(), "Selecciona antes un usuario", Toast.LENGTH_LONG).show();
                         }
                         return true;
                 }
