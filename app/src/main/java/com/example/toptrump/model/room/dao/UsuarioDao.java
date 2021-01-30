@@ -3,6 +3,7 @@ package com.example.toptrump.model.room.dao;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -23,9 +24,9 @@ public interface UsuarioDao {
     @Query("select * from usuario order by id")
     LiveData<List<Usuario>> getAll();
 
-    @Insert
-    long insert(Usuario usuario);
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(Usuario usuario);
 
     @Update
-    int update(Usuario usuario);
+    void update(Usuario usuario);
 }

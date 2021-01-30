@@ -85,12 +85,7 @@ public class Repository {
         UtilThread.threadExecutorPool.execute(new Runnable() {
             @Override
             public void run() {
-                try {
-                    long id = usuarioDao.insert(u);
-                    liveUsuarioInsertId.postValue(id);
-                } catch (Exception e) {
-                    liveUsuarioInsertId.postValue(0l);
-                }
+                usuarioDao.insert(u);
             }
         });
     }

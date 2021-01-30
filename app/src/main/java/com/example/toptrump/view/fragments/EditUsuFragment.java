@@ -64,10 +64,7 @@ public class EditUsuFragment extends Fragment {
         Long id = getArguments().getLong("Id");
         String nombre = getArguments().getString("Nombre");
         etnombre.setText(nombre);
-
-        try {
-            avatar = getArguments().getInt("Imagen");
-        } catch( NullPointerException e){ }
+        avatar = getArguments().getInt("Avatar");
         int numResp = getArguments().getInt("NumResp");
         int respCorrecta = getArguments().getInt("RespCor");
 

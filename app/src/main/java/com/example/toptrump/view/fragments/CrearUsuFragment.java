@@ -84,6 +84,9 @@ public class CrearUsuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!etNombre.getText().toString().isEmpty()){
+                    if(avatar == 0){
+                        avatar = R.drawable.avatar;
+                    }
                     String nombreUsuario = etNombre.getText().toString();
                     Usuario usuario = new Usuario(nombreUsuario, avatar,0,0);
                     Log.v("XYZ" ,"" +  avatar);

@@ -39,7 +39,7 @@ public class EditarAvatarAdapter extends RecyclerView.Adapter<EditarAvatarAdapte
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("Imagen", avatares[position]);
+                bundle.putInt("Avatar", avatares[position]);
 
                 NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.editUsuaFragment, bundle);
