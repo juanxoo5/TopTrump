@@ -8,14 +8,27 @@
         android:orderInCategory="100"
         android:title="@string/administrador"
         app:showAsAction="never" />
-        <item
-            android:id="@+id/juegoFragment"
-            android:orderInCategory="100"
-            android:title="@string/jugar"
-            app:showAsAction="never" />
-        <item
-            android:id="@+id/perfilFragment"
-            android:orderInCategory="100"
-            android:title="@string/perfil"
-            app:showAsAction="never" />
+    <item android:id="@+id/usuaFragment"
+        android:orderInCategory="100"
+        android:title="@string/usuarios"
+        app:showAsAction="never"
+        >
+        <menu>
+            <item
+                android:id="@+id/juegoFragment"
+                android:orderInCategory="100"
+                android:title="@string/jugar"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/perfilFragment"
+                android:orderInCategory="100"
+                android:title="@string/perfil"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/seleccionar"
+                android:orderInCategory="100"
+                android:title="@string/seleccionar_usuario"
+                app:showAsAction="never" />
+        </menu>
+    </item>
 </menu>

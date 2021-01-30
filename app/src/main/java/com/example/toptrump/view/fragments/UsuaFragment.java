@@ -101,6 +101,9 @@ public class UsuaFragment extends Fragment {
                             toast.show();
                         }
                         return true;
+                    case R.id.seleccionar:
+                        navController.navigate(R.id.usuaFragment);
+                        return true;
                 }
                 return true;
             }

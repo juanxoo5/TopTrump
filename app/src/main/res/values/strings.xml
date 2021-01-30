@@ -46,4 +46,6 @@
     <string name="guardar">Guardar</string>
     <string name="cambiar_avatar">Cambiar avatar</string>
     <string name="editar">Editar</string>
+    <string name="usuarios">Usuarios</string>
+    <string name="seleccionar_usuario">Seleccionar usuario</string>
 </resources>

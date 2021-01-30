@@ -139,6 +139,9 @@ public class EditUsuFragment extends Fragment {
                             navController.navigate(R.id.perfilFragment);
                         }
                         return true;
+                    case R.id.seleccionar:
+                        navController.navigate(R.id.usuaFragment);
+                        return true;
                 }
                 return true;
             }
