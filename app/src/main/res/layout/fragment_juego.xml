@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:text="@string/pregunta"
-                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/etRespuesta"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvDescripcion" />
@@ -81,10 +81,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@+id/etRespuesta" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/etRespuesta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"

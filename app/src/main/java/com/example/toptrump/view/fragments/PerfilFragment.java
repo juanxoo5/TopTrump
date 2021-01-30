@@ -62,8 +62,8 @@ public class PerfilFragment extends Fragment {
 
         imageView.setImageResource(mainActivity.usuarioActivo.get(0).getAvatar());
         tvNombre.setText(mainActivity.usuarioActivo.get(0).getNombre());
-        tvResp.setText(String.valueOf(mainActivity.usuarioActivo.get(0).getNumRes()));
-        tvRespCorrect.setText(String.valueOf(mainActivity.usuarioActivo.get(0).getResCor()));
+        tvResp.setText("Respuestas realizadas: " + mainActivity.usuarioActivo.get(0).getNumRes());
+        tvRespCorrect.setText("Respuestas correctas: " + mainActivity.usuarioActivo.get(0).getResCor());
 
         btCorreo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +86,9 @@ public class PerfilFragment extends Fragment {
             accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",accountName, null));
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "TopTrump - Puntuaciones");
-            emailIntent.putExtra(Intent.EXTRA_TEXT, "¡Hola soy X y estoy jugando a TopTrump, tengo una puntuación de X, ven e intenta superarme!");
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "¡Hola soy tu usuario " +
+                    mainActivity.usuarioActivo.get(0).getNombre() + " tu puntuacion hasta ahora es de "
+                    + mainActivity.usuarioActivo.get(0).getResCor() + " respuestas correctas, intenta superarte!!!");
             startActivity(Intent.createChooser(emailIntent,  getActivity().getString(R.string.enviar_mail)));
         }
     }
