@@ -22,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -67,6 +68,8 @@ public class ClaveFragment extends Fragment {
                     toast.getView().setBackgroundColor(Color.RED);
                     toast.show();
                 } else if(texto.getText().toString().equals(comprobarClave)){
+                        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(texto.getWindowToken(), 0);
                         Toast.makeText(view.getContext(),"Clave verificada", Toast.LENGTH_LONG).show();
                         NavHostFragment.findNavController(ClaveFragment.this).navigate(R.id.action_claveFragment_to_adminFragment);
                     } else {

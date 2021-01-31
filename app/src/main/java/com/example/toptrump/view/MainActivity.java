@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private IntentFilter bateriabaja;
     private Broadcast bc;
     public List<Usuario> usuarioActivo = DataHolder.getInstance().usuarioactivo;
+    public ArrayList<Usuario> editarUsuario = new ArrayList<>();
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

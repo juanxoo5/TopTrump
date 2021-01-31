@@ -36,10 +36,11 @@ import com.google.android.material.navigation.NavigationView;
 
 public class EditUsuFragment extends Fragment {
 
-    ViewModel viewmodel;
-    Usuario usuario;
-    EditText etnombre;
-    int avatar;
+    private ViewModel viewmodel;
+    private Usuario usuario;
+    private EditText etnombre;
+    private MainActivity mainActivity;
+    private int avatar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +54,7 @@ public class EditUsuFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewmodel = new ViewModelProvider(this).get(ViewModel.class);
 
+        navigation(view);
 
         Button btEditar = view.findViewById(R.id.btEditar);
         Button btEditarAvatar = view.findViewById(R.id.btEditarAvatar);
@@ -63,13 +65,28 @@ public class EditUsuFragment extends Fragment {
 
         Long id = getArguments().getLong("Id");
         String nombre = getArguments().getString("Nombre");
-        etnombre.setText(nombre);
         avatar = getArguments().getInt("Avatar");
         int numResp = getArguments().getInt("NumResp");
         int respCorrecta = getArguments().getInt("RespCor");
 
+        if (mainActivity.editarUsuario.toString().equals("[]")){
+            Usuario usuario = new Usuario(nombre, avatar, numResp, respCorrecta);
+            usuario.setId(id);
+            mainActivity.editarUsuario.add(usuario);
+        }else{
+            Log.v("XYZEditar", mainActivity.editarUsuario.toString());
+            id = mainActivity.editarUsuario.get(0).getId();
+            nombre = mainActivity.editarUsuario.get(0).getNombre();
+            if(avatar == 0) {
+                avatar = mainActivity.editarUsuario.get(0).getAvatar();
+            }else{
+                mainActivity.editarUsuario.get(0).setAvatar(avatar);
+            }
+            numResp = mainActivity.editarUsuario.get(0).getNumRes();
+            respCorrecta = mainActivity.editarUsuario.get(0).getResCor();
+        }
 
-        navigation(view);
+        etnombre.setText(nombre);
 
         NavController navController = new NavController(view.getContext());
 
@@ -81,10 +98,11 @@ public class EditUsuFragment extends Fragment {
                 if(nombreGuardado.isEmpty()){
                     etnombre.setError("Este campo no puede estar vacío");
                 } else {
-                    usuario = new Usuario(nombreGuardado, avatar, numResp, respCorrecta);
-                    usuario.setId(id);
+                    mainActivity.editarUsuario.get(0).setNombre(nombreGuardado);
+                    usuario = mainActivity.editarUsuario.get(0);
                     Log.v("XYZ", usuario.toString());
                     viewmodel.updateUsuario(usuario);
+                    mainActivity.editarUsuario.clear();
                     NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_editUsuaFragment_to_admUsuaFragment);
                 }
             }
@@ -101,7 +119,7 @@ public class EditUsuFragment extends Fragment {
 
     public void navigation(View view){
 
-        MainActivity mainActivity = (MainActivity) view.getContext();
+        mainActivity = (MainActivity) view.getContext();
         Toolbar toolbar = view.findViewById(R.id.tbEditUsuFrgm);
         mainActivity.setSupportActionBar(toolbar);
 
