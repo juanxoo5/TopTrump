@@ -62,99 +62,53 @@ public class JuegoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
+        mainActivity = (MainActivity) view.getContext();
 
-        navigation(view);
-        seleccionCarta();
+        if (!viewModel.getListaCartas().toString().equals("[]")){
+            seleccionCarta();
 
-        imgAnimal = view.findViewById(R.id.imgCart);
-        tvNombre = view.findViewById(R.id.tvNombre);
-        tvDescripcion = view.findViewById(R.id.tvDescripcion);
-        tvPregunta = view.findViewById(R.id.tvPregunta);
-        etRespuesta = view.findViewById(R.id.etRespuesta);
-        btRespuesta = view.findViewById(R.id.btEnviar);
+            imgAnimal = view.findViewById(R.id.imgCart);
+            tvNombre = view.findViewById(R.id.tvNombre);
+            tvDescripcion = view.findViewById(R.id.tvDescripcion);
+            tvPregunta = view.findViewById(R.id.tvPregunta);
+            etRespuesta = view.findViewById(R.id.etRespuesta);
+            btRespuesta = view.findViewById(R.id.btEnviar);
 
-        Glide.with(view.getContext()).load(carta.getUrl()).into(imgAnimal);
-        tvNombre.setText(carta.getNombre());
-        tvDescripcion.setText(carta.getDescripcion());
-        tvPregunta.setText(pregunta.getPregunta());
+            Glide.with(view.getContext()).load(carta.getUrl()).into(imgAnimal);
+            tvNombre.setText(carta.getNombre());
+            tvDescripcion.setText(carta.getDescripcion());
+            tvPregunta.setText(pregunta.getPregunta());
+        }
 
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         btRespuesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etRespuesta.getText().toString().isEmpty()){
-                    Toast.makeText(v.getContext(), "Introduzca una respuesta", Toast.LENGTH_LONG).show();
-                }else if(etRespuesta.getText().toString().equalsIgnoreCase(pregunta.getRespuesta())){
-                    int numResp = mainActivity.usuarioActivo.get(0).getNumRes();
-                    int restCor = mainActivity.usuarioActivo.get(0).getResCor();
+                if (!viewModel.getListaCartas().toString().equals("[]")) {
+                    if (etRespuesta.getText().toString().isEmpty()) {
+                        Toast.makeText(v.getContext(), "Introduzca una respuesta", Toast.LENGTH_LONG).show();
+                    } else if (etRespuesta.getText().toString().equalsIgnoreCase(pregunta.getRespuesta())) {
+                        int numResp = mainActivity.usuarioActivo.get(0).getNumRes();
+                        int restCor = mainActivity.usuarioActivo.get(0).getResCor();
 
-                    numResp = numResp + 1;
-                    restCor = restCor + 1;
+                        numResp = numResp + 1;
+                        restCor = restCor + 1;
 
-                    mainActivity.usuarioActivo.get(0).setNumRes(numResp);
-                    mainActivity.usuarioActivo.get(0).setResCor(restCor);
-                }else{
-                    int numResp = mainActivity.usuarioActivo.get(0).getNumRes();
+                        mainActivity.usuarioActivo.get(0).setNumRes(numResp);
+                        mainActivity.usuarioActivo.get(0).setResCor(restCor);
+                    } else {
+                        int numResp = mainActivity.usuarioActivo.get(0).getNumRes();
 
-                    numResp = numResp + 1;
+                        numResp = numResp + 1;
 
-                    mainActivity.usuarioActivo.get(0).setNumRes(numResp);
+                        mainActivity.usuarioActivo.get(0).setNumRes(numResp);
+                    }
+
+                    viewModel.updateUsuario(mainActivity.usuarioActivo.get(0));
+                    navController.navigate(R.id.juegoFragment);
                 }
-
-                viewModel.updateUsuario(mainActivity.usuarioActivo.get(0));
-                navController.navigate(R.id.juegoFragment);
             }
-        });
-
-    }
-
-    public void navigation(View view){
-
-        mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbJuegoFrgm);
-        mainActivity.setSupportActionBar(toolbar);
-
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutJuego);
-        NavigationView navigationView = view.findViewById(R.id.nav_view);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.claveFragment:
-                        navController.navigate(R.id.claveFragment);
-                        return true;
-                    case R.id.juegoFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.juegoFragment);
-                        }else {
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        }
-                        return true;
-                    case R.id.perfilFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.perfilFragment);
-                        }else {
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        }
-                        return true;
-                    case R.id.seleccionar:
-                        navController.navigate(R.id.usuaFragment);
-                        return true;
-                }
-                return true;
-            }
-
         });
 
     }

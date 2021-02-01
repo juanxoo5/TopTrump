@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_juego"
+    app:startDestination="@id/usuaFragment">
+    <fragment
+        android:id="@+id/usuaFragment"
+        android:name="com.example.toptrump.view.fragments.UsuaFragment"
+        android:label="fragment_user_frament"
+        tools:layout="@layout/fragment_usua" >
+        <action
+            android:id="@+id/action_usuaFragment_to_claveFragment2"
+            app:destination="@id/claveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/claveFragment"
+        android:name="com.example.toptrump.view.fragments.ClaveFragment"
+        android:label="fragment_clave"
+        tools:layout="@layout/fragment_clave">
+        <action
+            android:id="@+id/action_fragment_to_first_graph"
+            app:destination="@id/nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.toptrump.view.fragments.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/juegoFragment"
+        android:name="com.example.toptrump.view.fragments.JuegoFragment"
+        android:label="fragment_juego"
+        tools:layout="@layout/fragment_juego" />
+    <include app:graph="@navigation/nav_graph" />
+</navigation>

@@ -60,7 +60,7 @@ public class RegistFragment extends Fragment {
 
         if(!comprobarClave.isEmpty()){
             // inicias app con clave existente te lleva a juego directamente
-            NavHostFragment.findNavController(RegistFragment.this).navigate(R.id.action_FirstFragment_to_userFrament);
+            NavHostFragment.findNavController(RegistFragment.this).navigate(R.id.action_RegistFragment_to_fragmentMenu);
         }
 
         bt.setOnClickListener(new View.OnClickListener() {

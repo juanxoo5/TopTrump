@@ -49,8 +49,6 @@ public class ClaveFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        navigation(view);
         
         bt = view.findViewById(R.id.btEnvClav2);
         texto = view.findViewById(R.id.tietClave2);
@@ -71,7 +69,8 @@ public class ClaveFragment extends Fragment {
                         InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(texto.getWindowToken(), 0);
                         Toast.makeText(view.getContext(),"Clave verificada", Toast.LENGTH_LONG).show();
-                        NavHostFragment.findNavController(ClaveFragment.this).navigate(R.id.action_claveFragment_to_adminFragment);
+                        NavHostFragment.findNavController(ClaveFragment.this).navigate(R.id.action_fragment_to_first_graph);
+                        NavHostFragment.findNavController(ClaveFragment.this).navigate(R.id.action_global_adminFragment);
                     } else {
                         Toast toast = Toast.makeText(view.getContext()," La clave es incorrecta ", Toast.LENGTH_LONG);
                         toast.getView().setBackgroundColor(Color.RED);
@@ -79,55 +78,6 @@ public class ClaveFragment extends Fragment {
                     }
             }
         });
-    }
-
-    public void navigation(View view){
-
-        MainActivity mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbClaveFrgm);
-        mainActivity.setSupportActionBar(toolbar);
-
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutClave);
-        NavigationView navigationView = view.findViewById(R.id.nav_view);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
-        Log.v("navigation controler", navController.toString());
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.claveFragment:
-                        navController.navigate(R.id.claveFragment);
-                        return true;
-                    case R.id.juegoFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.juegoFragment);
-                        }else {
-                            navController.navigate(R.id.usuaFragment);
-                        }
-                        return true;
-                    case R.id.perfilFragment:
-                        if(mainActivity.usuarioActivo.isEmpty()){
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        } else {
-                            navController.navigate(R.id.perfilFragment);
-                        }
-                        return true;
-                    case R.id.seleccionar:
-                        navController.navigate(R.id.usuaFragment);
-                        return true;
-                }
-                return true;
-            }
-
-        });
-
     }
 
     @Override

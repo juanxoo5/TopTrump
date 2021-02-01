@@ -57,58 +57,7 @@ public class UsuaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
 
-        navigation(view);
         init(view);
-
-    }
-
-    public void navigation(View view){
-
-        MainActivity mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbUsuariosFrgm);
-        mainActivity.setSupportActionBar(toolbar);
-
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutUsua);
-        NavigationView navigationView = view.findViewById(R.id.nav_view);
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.claveFragment:
-                        navController.navigate(R.id.claveFragment);
-                        return true;
-                    case R.id.juegoFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.juegoFragment);
-                        }else {
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        }
-                        return true;
-                    case R.id.perfilFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.perfilFragment);
-                        }else {
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        }
-                        return true;
-                    case R.id.seleccionar:
-                        navController.navigate(R.id.usuaFragment);
-                        return true;
-                }
-                return true;
-            }
-
-        });
 
     }
 

@@ -51,8 +51,7 @@ public class PerfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        navigation(view);
+        mainActivity = (MainActivity) view.getContext();
 
         ImageView imageView = view.findViewById(R.id.UserProfileImage);
         TextView tvNombre = view.findViewById(R.id.UserProfileName);
@@ -91,56 +90,6 @@ public class PerfilFragment extends Fragment {
                     + mainActivity.usuarioActivo.get(0).getResCor() + " respuestas correctas, intenta superarte!!!");
             startActivity(Intent.createChooser(emailIntent,  getActivity().getString(R.string.enviar_mail)));
         }
-    }
-
-    public void navigation(View view){
-
-        mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbPerfilFrgm);
-        mainActivity.setSupportActionBar(toolbar);
-
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutPerfil);
-        NavigationView navigationView = view.findViewById(R.id.nav_view);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.claveFragment:
-                        navController.navigate(R.id.claveFragment);
-                        return true;
-                    case R.id.juegoFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.juegoFragment);
-                        }else {
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        }
-                        return true;
-                    case R.id.perfilFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.perfilFragment);
-                        }else {
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        }
-                        return true;
-                    case R.id.seleccionar:
-                        navController.navigate(R.id.usuaFragment);
-                        return true;
-                }
-                return true;
-            }
-
-        });
-
     }
 
     @Override
