@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/CoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondomovil"
     android:fitsSystemWindows="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +20,7 @@
             android:id="@+id/imgCart"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@null"
             android:contentDescription="@string/imagen"
             app:layout_constraintBottom_toTopOf="@+id/tvNombre"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nombre"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tvDescripcion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="64dp"
             android:text="@string/descripcion"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tvPregunta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:text="@string/pregunta"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/etRespuesta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +85,7 @@
             android:ems="10"
             android:hint="@string/respuesta"
             android:inputType="textPersonName"
+            android:textColorHint="#FFBDBDBD"
             app:layout_constraintBottom_toTopOf="@+id/btEnviar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

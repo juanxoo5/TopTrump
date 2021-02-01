@@ -86,7 +86,11 @@
         android:id="@+id/fragmentMenu"
         android:name="com.example.toptrump.view.fragments.fragmentMenu"
         android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_fragmentMenu_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
     <action android:id="@+id/action_global_adminFragment" app:destination="@id/adminFragment" />
 
 </navigation>

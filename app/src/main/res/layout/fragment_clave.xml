@@ -2,9 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerLayoutClave"
+    android:background="@drawable/fondomovil"
     tools:context=".view.fragments.ClaveFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
             android:text="@string/introduzca_clave_de_administrador"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tilClave2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,20 +35,26 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="200dp"
+            android:textColorHint="#FFFFFF"
             app:boxBackgroundMode="outline"
             app:endIconMode="password_toggle"
+            app:endIconTint="#FFFFFF"
             app:errorEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btEnvClav2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvClave2">
+            app:layout_constraintTop_toBottomOf="@+id/tvClave2"
+            app:startIconTint="#FFFFFF"
+            app:suffixTextColor="#FFBDBDBD">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tietClave2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/clave"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FDFAFA" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

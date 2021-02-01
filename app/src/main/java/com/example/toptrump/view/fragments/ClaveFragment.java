@@ -57,6 +57,7 @@ public class ClaveFragment extends Fragment {
         sp = getContext().getSharedPreferences("dato", Context.MODE_PRIVATE);
         String comprobarClave = sp.getString("clave","");
 
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,8 +70,7 @@ public class ClaveFragment extends Fragment {
                         InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(texto.getWindowToken(), 0);
                         Toast.makeText(view.getContext(),"Clave verificada", Toast.LENGTH_LONG).show();
-                        NavHostFragment.findNavController(ClaveFragment.this).navigate(R.id.action_fragment_to_first_graph);
-                        NavHostFragment.findNavController(ClaveFragment.this).navigate(R.id.action_global_adminFragment);
+                        navController.navigate(R.id.action_fragmentMenu_to_adminFragment);
                     } else {
                         Toast toast = Toast.makeText(view.getContext()," La clave es incorrecta ", Toast.LENGTH_LONG);
                         toast.getView().setBackgroundColor(Color.RED);

@@ -11,6 +11,7 @@
         android:id="@+id/CoordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/fondomovil"
         android:fitsSystemWindows="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,6 +38,9 @@
                 android:ems="10"
                 android:hint="@string/nombre"
                 android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFBDBDBD"
                 app:layout_constraintBottom_toTopOf="@+id/btGuardar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +101,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cambiar_avatar"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/etNombreUsuario"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

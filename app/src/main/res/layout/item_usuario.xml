@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayoutItem"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@null">
 
     <ImageView
         android:id="@+id/imgUsu"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@null"
         android:contentDescription="@string/imagen"
         app:layout_constraintBottom_toTopOf="@id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +28,7 @@
         android:gravity="center"
         android:text="@string/nombre"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

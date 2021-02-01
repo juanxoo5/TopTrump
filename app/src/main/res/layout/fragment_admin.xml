@@ -11,6 +11,7 @@
         android:id="@+id/CoordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/fondomovil"
         android:fitsSystemWindows="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +35,7 @@
                 android:id="@+id/btAdminUsu"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="#FFFFFF"
+                android:background="@null"
                 android:contentDescription="@string/imgusuarios"
                 android:src="@drawable/iconousuario"
                 app:layout_constraintBottom_toTopOf="@+id/guideline5"
@@ -46,7 +47,7 @@
                 android:id="@+id/btAdminCart"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="#FFFFFF"
+                android:background="@null"
                 android:contentDescription="@string/imgcartas"
                 android:src="@drawable/iconocarta"
                 app:layout_constraintBottom_toTopOf="@+id/guideline7"
@@ -60,6 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/administrar_usuarios"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/btAdminUsu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +73,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/administrar_cartas"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/btAdminCart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
