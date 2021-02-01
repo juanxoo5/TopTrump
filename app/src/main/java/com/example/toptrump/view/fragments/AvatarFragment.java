@@ -12,6 +12,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +38,7 @@ public class AvatarFragment extends Fragment {
     private CrearAvatarAdapter adapter;
     private static List<Usuario> ImagenLista;
     private NavController navController;
+    private RecyclerView.LayoutManager layoutManager;
     private int[] sliderImagesId = new int[]{
             R.drawable.avatar, R.drawable.chicobasura, R.drawable.chicocalvo,
             R.drawable.chicoelegante, R.drawable.chicahipster, R.drawable.chicainteligente,
@@ -112,6 +114,7 @@ public class AvatarFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         adapter = new CrearAvatarAdapter(sliderImagesId);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        layoutManager = new GridLayoutManager(getActivity(),2);
+        recyclerView.setLayoutManager(layoutManager);
     }
 }

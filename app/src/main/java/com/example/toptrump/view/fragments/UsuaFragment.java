@@ -14,6 +14,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +41,7 @@ public class UsuaFragment extends Fragment {
     private ViewModel viewModelActivity;
     private RecyclerView recyclerView;
     private UsuariosAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
     private static List<Usuario> usuarioLista;
     private NavController navController;
 
@@ -75,7 +77,8 @@ public class UsuaFragment extends Fragment {
             }
         });
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        layoutManager = new GridLayoutManager(getActivity(),2);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
 
