@@ -13,7 +13,11 @@
         android:theme="@style/Theme.TopTrump">
         <activity android:name=".view.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.TopTrump.NoActionBar"></activity>
+            android:theme="@style/Theme.TopTrump.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.splash"
             android:label="@string/app_name"
@@ -27,7 +31,7 @@
 
         <receiver android:name=".model.Broadcast">
             <intent-filter>
-                <action android:name="android.intent.BATTERY_LOW" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
             </intent-filter>
         </receiver>
     </application>

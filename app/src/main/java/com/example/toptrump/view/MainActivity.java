@@ -2,6 +2,8 @@ package com.example.toptrump.view;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -21,6 +23,7 @@ import androidx.core.content.ContextCompat;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +31,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private final int PERMISO_PHONE_STATE = 1;
-    private IntentFilter bateriabaja;
-    private Broadcast bc;
     public List<Usuario> usuarioActivo = DataHolder.getInstance().usuarioactivo;
     public ArrayList<Usuario> editarUsuario = new ArrayList<>();
     private OnBackPressedListener listener;
+    protected IntentFilter bateriaIntentFilter;
+    protected Broadcast cargaB;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -51,11 +54,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bateriabaja = new IntentFilter();
-        bateriabaja.addAction(Intent.ACTION_BATTERY_LOW);
-        bc = new Broadcast();
-
         setContentView(R.layout.activity_main);
+        bateriaIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_LOW);
+        bateriaIntentFilter.addAction(Intent.ACTION_BATTERY_LOW);
+        cargaB = new Broadcast();
+
+
         obtenerPermisoTelefono();
     }
 
@@ -96,18 +100,6 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        registerReceiver(bc,bateriabaja);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(bc);
-    }
-
     public View.OnClickListener botones = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -128,6 +120,18 @@ public class MainActivity extends AppCompatActivity {
 
     public interface OnBackPressedListener{
         void onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(cargaB, bateriaIntentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(cargaB);
     }
 
 }
