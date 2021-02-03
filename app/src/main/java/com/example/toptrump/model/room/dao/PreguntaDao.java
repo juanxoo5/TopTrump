@@ -9,23 +9,32 @@ import androidx.room.Update;
 import com.example.toptrump.model.room.pojo.Carta;
 import com.example.toptrump.model.room.pojo.Pregunta;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Dao
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+
 public interface PreguntaDao {
 
-    @Query("delete from pregunta where id = :id")
-    int delete(long id);
+    @DELETE("coche/{id}")
+    Call<Boolean> deletePregunta(@Path("id") long id);
 
-    @Query("select * from pregunta where id = :id")
-    Pregunta get(long id);
+    @GET("coche")
+    Call<ArrayList<Pregunta>> getPreguntas();
 
-    @Query("select * from pregunta order by id")
-    LiveData<List<Pregunta>> getAll();
+    @GET("coche")
+    Call<ResponseBody> getString();
 
-    @Insert
-    long insert(Pregunta pregunta);
+    @POST("coche")
+    Call<Pregunta> postPregunta(@Body Pregunta pregunta);
 
-    @Update
-    int update(Pregunta pregunta);
+    @PUT("coche/{id}")
+    Call<Boolean> putPregunta(@Path("id") long id, @Body Pregunta pregunta);
 }

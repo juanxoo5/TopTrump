@@ -138,9 +138,11 @@ public class AdmUsuaFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        NavController navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
-        return NavigationUI.onNavDestinationSelected(item, navController)
-                || super.onOptionsItemSelected(item);
+        if(item.getItemId() == R.id.crear){
+            navController.navigate(R.id.action_admUserFragment_to_crearUsurFragment);
+            return true;
+        }
+        return true;
     }
 
 }

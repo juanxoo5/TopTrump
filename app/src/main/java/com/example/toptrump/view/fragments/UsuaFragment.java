@@ -36,7 +36,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
-public class UsuaFragment extends Fragment {
+public class UsuaFragment extends Fragment implements MainActivity.OnBackPressedListener{
 
     private ViewModel viewModelActivity;
     private RecyclerView recyclerView;
@@ -93,6 +93,23 @@ public class UsuaFragment extends Fragment {
         NavController navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
         return NavigationUI.onNavDestinationSelected(item, navController)
                 || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).setOnBackPressedListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((MainActivity)getActivity()).setOnBackPressedListener(null);
+    }
+
+    @Override
+    public void onBackPressed() {
+        getActivity().finish();
     }
 
 }

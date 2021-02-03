@@ -8,23 +8,33 @@ import androidx.room.Update;
 
 import com.example.toptrump.model.room.pojo.Carta;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Dao
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+
+
 public interface CartaDao {
 
-    @Query("delete from carta where id = :id")
-    int delete(long id);
+    @DELETE("coche/{id}")
+    Call<Boolean> deleteCarta(@Path("id") long id);
 
-    @Query("select * from carta where id = :id")
-    Carta get(long id);
+    @GET("coche")
+    Call<ArrayList<Carta>> getCartas();
 
-    @Query("select * from carta order by id")
-    LiveData<List<Carta>> getAll();
+    @GET("coche")
+    Call<ResponseBody> getString();
 
-    @Insert
-    long insert(Carta carta);
+    @POST("coche")
+    Call<Carta> postCarta(@Body Carta carta);
 
-    @Update
-    int update(Carta carta);
+    @PUT("coche/{id}")
+    Call<Boolean> putCarta(@Path("id") long id, @Body Carta carta);
 }

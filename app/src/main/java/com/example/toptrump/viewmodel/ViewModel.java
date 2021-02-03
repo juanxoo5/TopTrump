@@ -22,11 +22,11 @@ public class ViewModel extends AndroidViewModel {
         repository = new Repository(application);
     }
 
-    public LiveData<List<Carta>> getListaCartas() {
+    public List<Carta> getListaCartas() {
         return repository.getListaCartas();
     }
 
-    public LiveData<List<Pregunta>> getListaPreguntas() {
+    public List<Pregunta> getListaPreguntas() {
         return repository.getListaPreguntas();
     }
 

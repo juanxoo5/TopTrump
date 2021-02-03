@@ -35,7 +35,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="200dp"
-            android:textColorHint="#FFFFFF"
+            android:textColorHint="#FFBDBDBD"
             app:boxBackgroundMode="outline"
             app:endIconMode="password_toggle"
             app:endIconTint="#FFFFFF"

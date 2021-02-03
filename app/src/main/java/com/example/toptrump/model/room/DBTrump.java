@@ -13,11 +13,9 @@ import com.example.toptrump.model.room.pojo.Carta;
 import com.example.toptrump.model.room.pojo.Pregunta;
 import com.example.toptrump.model.room.pojo.Usuario;
 
-@Database(entities = {Carta.class, Pregunta.class, Usuario.class}, version = 1, exportSchema = false)
+@Database(entities = {Usuario.class}, version = 1, exportSchema = false)
 public abstract class DBTrump extends RoomDatabase {
 
-    public abstract CartaDao getCartaDao();
-    public abstract PreguntaDao getPreguntaDao();
     public abstract UsuarioDao getUsuarioDao();
 
     private static volatile DBTrump INSTANCE;

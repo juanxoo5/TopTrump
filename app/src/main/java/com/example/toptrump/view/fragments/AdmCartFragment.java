@@ -28,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 public class AdmCartFragment extends Fragment {
 
     private View view;
+    private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,8 +43,6 @@ public class AdmCartFragment extends Fragment {
         this.view = view;
         navigation();
 
-        NavController navController = new NavController(view.getContext());
-
     }
 
     public void navigation(){
@@ -54,7 +53,7 @@ public class AdmCartFragment extends Fragment {
 
         DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutAdmCart);
         NavigationView navigationView = view.findViewById(R.id.nav_view);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
@@ -96,15 +95,18 @@ public class AdmCartFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.menu_admin, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        NavController navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
-        return NavigationUI.onNavDestinationSelected(item, navController)
-                || super.onOptionsItemSelected(item);
+
+        if(item.getItemId() == R.id.crear){
+            navController.navigate(R.id.action_admCartFragment_to_crearCartaFragment);
+            return true;
+        }
+        return true;
     }
 
 }

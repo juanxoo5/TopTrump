@@ -70,7 +70,7 @@ public class ClaveFragment extends Fragment {
                         InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(texto.getWindowToken(), 0);
                         Toast.makeText(view.getContext(),"Clave verificada", Toast.LENGTH_LONG).show();
-                        navController.navigate(R.id.action_fragmentMenu_to_adminFragment);
+                        navController.navigate(R.id.action_global_adminFragment);
                     } else {
                         Toast toast = Toast.makeText(view.getContext()," La clave es incorrecta ", Toast.LENGTH_LONG);
                         toast.getView().setBackgroundColor(Color.RED);

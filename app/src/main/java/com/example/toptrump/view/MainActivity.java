@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Broadcast bc;
     public List<Usuario> usuarioActivo = DataHolder.getInstance().usuarioactivo;
     public ArrayList<Usuario> editarUsuario = new ArrayList<>();
+    private OnBackPressedListener listener;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -113,4 +114,20 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        if(listener != null)
+            listener.onBackPressed();
+        super.onBackPressed();
+    }
+
+    public void setOnBackPressedListener(OnBackPressedListener listener){
+        this.listener = listener;
+    }
+
+    public interface OnBackPressedListener{
+        void onBackPressed();
+    }
+
 }

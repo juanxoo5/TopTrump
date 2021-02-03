@@ -119,19 +119,19 @@ public class JuegoFragment extends Fragment {
 
         Random r = new Random();
 
-        int randomCarta = r.nextInt(viewModel.getListaCartas().getValue().size());
-        carta = viewModel.getListaCartas().getValue().get(randomCarta);
+        int randomCarta = r.nextInt(viewModel.getListaCartas().size());
+        carta = viewModel.getListaCartas().get(randomCarta);
 
-        for(int i = 0; i <= viewModel.getListaPreguntas().getValue().size(); i++){
+        for(int i = 0; i <= viewModel.getListaPreguntas().size(); i++){
 
-            if(viewModel.getListaPreguntas().getValue().get(i).getIdcarta() == carta.getId()){
-                preguntas.add(viewModel.getListaPreguntas().getValue().get(i));
+            if(viewModel.getListaPreguntas().get(i).getIdcarta() == carta.getId()){
+                preguntas.add(viewModel.getListaPreguntas().get(i));
             }
 
         }
 
         int randomPregunta = r.nextInt(preguntas.size());
-        pregunta = viewModel.getListaPreguntas().getValue().get(randomPregunta);
+        pregunta = viewModel.getListaPreguntas().get(randomPregunta);
 
     }
 

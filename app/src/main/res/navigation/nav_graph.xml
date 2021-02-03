@@ -34,7 +34,11 @@
         android:id="@+id/admCartFragment"
         android:name="com.example.toptrump.view.fragments.AdmCartFragment"
         android:label="fragment_adm_card"
-        tools:layout="@layout/fragment_adm_card" />
+        tools:layout="@layout/fragment_adm_card" >
+        <action
+            android:id="@+id/action_admCartFragment_to_crearCartaFragment"
+            app:destination="@id/crearCartaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adminFragment"
         android:name="com.example.toptrump.view.fragments.AdminFragment"
@@ -46,6 +50,9 @@
         <action
             android:id="@+id/action_adminFragment_to_admCardFragment"
             app:destination="@id/admCartFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_nav_graph2"
+            app:destination="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/crearUsuaFragment"
@@ -92,5 +99,23 @@
             app:destination="@id/adminFragment" />
     </fragment>
     <action android:id="@+id/action_global_adminFragment" app:destination="@id/adminFragment" />
+    <fragment
+        android:id="@+id/crearCartaFragment"
+        android:name="com.example.toptrump.view.fragments.crearCartaFragment"
+        android:label="fragment_crear_carta"
+        tools:layout="@layout/fragment_crear_carta" >
+        <action
+            android:id="@+id/action_crearCartaFragment_to_preguntasCartaFragment"
+            app:destination="@id/preguntasCartaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/preguntasCartaFragment"
+        android:name="com.example.toptrump.view.fragments.preguntasCartaFragment"
+        android:label="fragment_preguntas_carta"
+        tools:layout="@layout/fragment_preguntas_carta" >
+        <action
+            android:id="@+id/action_preguntasCartaFragment_to_admCartFragment"
+            app:destination="@id/admCartFragment" />
+    </fragment>
 
 </navigation>
