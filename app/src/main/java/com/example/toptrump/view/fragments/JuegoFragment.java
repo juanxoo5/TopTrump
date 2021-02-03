@@ -88,7 +88,7 @@ public class JuegoFragment extends Fragment {
                 if (!viewModel.getListaCartas().toString().equals("[]")) {
                     if (etRespuesta.getText().toString().isEmpty()) {
                         Toast.makeText(v.getContext(), "Introduzca una respuesta", Toast.LENGTH_LONG).show();
-                    } else if (etRespuesta.getText().toString().equalsIgnoreCase(pregunta.getRespuesta())) {
+                    } else if (etRespuesta.getText().toString().equalsIgnoreCase(String.valueOf(pregunta.getRespuesta()))) {
                         int numResp = mainActivity.usuarioActivo.get(0).getNumRes();
                         int restCor = mainActivity.usuarioActivo.get(0).getResCor();
 

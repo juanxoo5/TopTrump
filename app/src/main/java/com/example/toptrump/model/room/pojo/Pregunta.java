@@ -27,9 +27,9 @@ public class Pregunta {
 
     @NonNull
     @ColumnInfo(name = "respuesta")
-    private String respuesta;
+    private int respuesta;
 
-    public Pregunta(int idcarta, @NonNull String pregunta, @NonNull String respuesta) {
+    public Pregunta(int idcarta, @NonNull String pregunta, @NonNull int respuesta) {
         this.idcarta = idcarta;
         this.pregunta = pregunta;
         this.respuesta = respuesta;
@@ -61,11 +61,11 @@ public class Pregunta {
     }
 
     @NonNull
-    public String getRespuesta() {
+    public int getRespuesta() {
         return respuesta;
     }
 
-    public void setRespuesta(@NonNull String respuesta) {
+    public void setRespuesta(@NonNull int respuesta) {
         this.respuesta = respuesta;
     }
 

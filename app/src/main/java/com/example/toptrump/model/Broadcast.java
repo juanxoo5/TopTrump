@@ -19,8 +19,6 @@ public class Broadcast extends BroadcastReceiver {
             Toast.makeText(context, "Top Trump - Batería baja, por favor conecte el cargador", Toast.LENGTH_LONG).show();
             Log.v("XYZ", "BATTERY LOW!!");
         }
-
-
     }
 }
 
