@@ -8,7 +8,7 @@
         android:id="@+id/usuaFragment"
         android:name="com.example.toptrump.view.fragments.UsuaFragment"
         android:label="fragment_user_frament"
-        tools:layout="@layout/fragment_usua" >
+        tools:layout="@layout/fragment_usua">
         <action
             android:id="@+id/action_usuaFragment_to_claveFragment2"
             app:destination="@id/claveFragment" />

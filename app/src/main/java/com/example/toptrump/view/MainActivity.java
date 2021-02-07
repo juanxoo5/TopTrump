@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected IntentFilter bateriaIntentFilter;
     protected Broadcast cargaB;
 
-    @Override
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
             case PERMISO_PHONE_STATE: {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 } return;
             }
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
         cargaB = new Broadcast();
 
 
-        obtenerPermisoTelefono();
+        //obtenerPermisoTelefono();
     }
 
-    private void obtenerPermisoTelefono() {
+    /*private void obtenerPermisoTelefono() {
         int result = PackageManager.PERMISSION_GRANTED;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             result = checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
@@ -98,14 +98,7 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.setNegativeButton(R.string.cancelar, null);
         builder.show();
-    }
-
-    public View.OnClickListener botones = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-        }
-    };
+    }*/
 
     @Override
     public void onBackPressed() {

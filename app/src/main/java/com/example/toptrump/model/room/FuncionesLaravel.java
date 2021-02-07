@@ -1,5 +1,6 @@
 package com.example.toptrump.model.room;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.toptrump.model.room.dao.CartaDao;
@@ -18,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FuncionesLaravel {
 
-    private String url = "https://informatica.ieszaidinvergeles.org:9038/laravel/miCocheApp/public/api/";
+    private String url = "https://informatica.ieszaidinvergeles.org:9034/laravel/toptrump/public/api/";
     private List<Carta> listaCartas = new ArrayList<>();
     private List<Pregunta> listaPreguntas = new ArrayList<>();
 
@@ -101,9 +102,13 @@ public class FuncionesLaravel {
         request.enqueue(new Callback<ArrayList<Carta>>() {
             @Override
             public void onResponse(Call<ArrayList<Carta>> call, Response<ArrayList<Carta>> response) {
-                Log.v("XYZresponse", response.body().toString());
-                listaCartas = response.body();
-                Log.v("XYZlista", listaCartas.toString());
+                try{
+                    Log.v("XYZresponse", response.body().toString());
+                    listaCartas = response.body();
+                    Log.v("XYZlista", listaCartas.toString());
+                }catch (NullPointerException e){
+                    Log.v("xyz", "Ha habido un error");
+                }
             }
 
             @Override

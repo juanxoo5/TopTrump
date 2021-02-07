@@ -11,7 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enviar_puntuacion_al_correo">enviar puntuacion al correo</string>
+    <string name="enviar_puntuacion_al_correo">Enviar puntuacion al correo</string>
     <string name="userimage">UserImage</string>
     <string name="username">UserName</string>
     <string name="preguntas_contestadas">Preguntas contestadas:</string>
@@ -41,11 +41,22 @@
     <string name="perfil">Perfil</string>
     <string name="usuario">Usuario</string>
     <string name="elige_un_avatar">Elige un avatar</string>
-    <string name="crearusuario">crearUsuario</string>
-    <string name="enviar_mail">enviando email</string>
+    <string name="crearusuario">Crear Usuario</string>
+    <string name="enviar_mail">Enviando email</string>
     <string name="guardar">Guardar</string>
     <string name="cambiar_avatar">Cambiar avatar</string>
     <string name="editar">Editar</string>
     <string name="usuarios">Usuarios</string>
     <string name="seleccionar_usuario">Seleccionar usuario</string>
+    <string name="enviarpreguntas">Enviar Preguntas</string>
+    <string name="tamaño">Tamaño del animal</string>
+    <string name="peso">Peso del animal</string>
+    <string name="velocidad">Velocidad del animal</string>
+    <string name="evasion">Evasion del animal</string>
+    <string name="metros">Metros</string>
+    <string name="kilogramos">Kilogramos</string>
+    <string name="kmH">Kilometros/hora</string>
+    <string name="evaluar">Evaluar del 0 al 10</string>
+    <string name="cambiar_imagen">Cambiar Imagen</string>
+    <string name="url_imagen">Url imagen</string>
 </resources>

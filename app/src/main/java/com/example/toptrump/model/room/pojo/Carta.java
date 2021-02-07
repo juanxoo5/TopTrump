@@ -5,24 +5,17 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "carta")
 public class Carta {
 
-    @PrimaryKey(autoGenerate = true)
     private long id;
 
-    @NonNull
-    @ColumnInfo(name = "url")
     private String url;
 
-    @ColumnInfo(name = "nombre")
     private String nombre;
 
-    @NonNull
-    @ColumnInfo(name = "descripcion")
     private String descripcion;
 
-    public Carta(@NonNull String url, String nombre, @NonNull String descripcion) {
+    public Carta(String url, String nombre, String descripcion) {
         this.url = url;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -41,7 +34,7 @@ public class Carta {
         return url;
     }
 
-    public void setUrl(@NonNull String url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
@@ -58,7 +51,7 @@ public class Carta {
         return descripcion;
     }
 
-    public void setDescripcion(@NonNull String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 

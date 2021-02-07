@@ -22,7 +22,7 @@
         android:id="@+id/admUsuaFragment"
         android:name="com.example.toptrump.view.fragments.AdmUsuaFragment"
         android:label="fragment_adm_user"
-        tools:layout="@layout/fragment_adm_user" >
+        tools:layout="@layout/fragment_adm_user">
         <action
             android:id="@+id/action_admUserFragment_to_crearUsurFragment"
             app:destination="@id/crearUsuaFragment" />
@@ -34,7 +34,7 @@
         android:id="@+id/admCartFragment"
         android:name="com.example.toptrump.view.fragments.AdmCartFragment"
         android:label="fragment_adm_card"
-        tools:layout="@layout/fragment_adm_card" >
+        tools:layout="@layout/fragment_adm_card">
         <action
             android:id="@+id/action_admCartFragment_to_crearCartaFragment"
             app:destination="@id/crearCartaFragment" />
@@ -43,7 +43,7 @@
         android:id="@+id/adminFragment"
         android:name="com.example.toptrump.view.fragments.AdminFragment"
         android:label="fragment_admin"
-        tools:layout="@layout/fragment_admin" >
+        tools:layout="@layout/fragment_admin">
         <action
             android:id="@+id/action_adminFragment_to_admUserFragment"
             app:destination="@id/admUsuaFragment" />
@@ -58,7 +58,7 @@
         android:id="@+id/crearUsuaFragment"
         android:name="com.example.toptrump.view.fragments.CrearUsuFragment"
         android:label="fragment_crear_usur"
-        tools:layout="@layout/fragment_crear_usu" >
+        tools:layout="@layout/fragment_crear_usu">
         <action
             android:id="@+id/action_crearUsuaFragment_to_avatarFragment"
             app:destination="@id/avatarFragment" />
@@ -67,7 +67,7 @@
         android:id="@+id/editUsuaFragment"
         android:name="com.example.toptrump.view.fragments.EditUsuFragment"
         android:label="fragment_edit_usu"
-        tools:layout="@layout/fragment_edit_usu" >
+        tools:layout="@layout/fragment_edit_usu">
         <action
             android:id="@+id/action_editUsuaFragment_to_admUsuaFragment"
             app:destination="@id/admUsuaFragment" />
@@ -79,7 +79,7 @@
         android:id="@+id/editAvatarFragment"
         android:name="com.example.toptrump.view.fragments.EditAvatarFragment"
         android:label="fragment_edit_avatar"
-        tools:layout="@layout/fragment_edit_avatar" >
+        tools:layout="@layout/fragment_edit_avatar">
         <action
             android:id="@+id/action_editAvatarFragment_to_editUsuaFragment"
             app:destination="@id/editUsuaFragment" />
@@ -93,26 +93,28 @@
         android:id="@+id/fragmentMenu"
         android:name="com.example.toptrump.view.fragments.fragmentMenu"
         android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" >
+        tools:layout="@layout/fragment_menu">
         <action
             android:id="@+id/action_fragmentMenu_to_adminFragment"
             app:destination="@id/adminFragment" />
     </fragment>
-    <action android:id="@+id/action_global_adminFragment" app:destination="@id/adminFragment" />
+    <action
+        android:id="@+id/action_global_adminFragment"
+        app:destination="@id/adminFragment" />
     <fragment
         android:id="@+id/crearCartaFragment"
-        android:name="com.example.toptrump.view.fragments.crearCartaFragment"
+        android:name="com.example.toptrump.view.fragments.CrearCartaFragment"
         android:label="fragment_crear_carta"
-        tools:layout="@layout/fragment_crear_carta" >
+        tools:layout="@layout/fragment_crear_carta">
         <action
             android:id="@+id/action_crearCartaFragment_to_preguntasCartaFragment"
             app:destination="@id/preguntasCartaFragment" />
     </fragment>
     <fragment
         android:id="@+id/preguntasCartaFragment"
-        android:name="com.example.toptrump.view.fragments.preguntasCartaFragment"
+        android:name="com.example.toptrump.view.fragments.PreguntasCartaFragment"
         android:label="fragment_preguntas_carta"
-        tools:layout="@layout/fragment_preguntas_carta" >
+        tools:layout="@layout/fragment_preguntas_carta">
         <action
             android:id="@+id/action_preguntasCartaFragment_to_admCartFragment"
             app:destination="@id/admCartFragment" />

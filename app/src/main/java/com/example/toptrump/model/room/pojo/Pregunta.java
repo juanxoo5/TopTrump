@@ -6,30 +6,17 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "pregunta",
-        foreignKeys = @ForeignKey(
-                entity = Carta.class,
-                parentColumns = "id",
-                childColumns = "idcarta",
-                onDelete = ForeignKey.RESTRICT))
 public class Pregunta {
 
-    @PrimaryKey(autoGenerate = true)
     private long id;
 
-    @NonNull
-    @ColumnInfo(name = "idcarta")
-    private int idcarta;
+    private long idcarta;
 
-    @NonNull
-    @ColumnInfo(name = "pregunta")
     private String pregunta;
 
-    @NonNull
-    @ColumnInfo(name = "respuesta")
     private int respuesta;
 
-    public Pregunta(int idcarta, @NonNull String pregunta, @NonNull int respuesta) {
+    public Pregunta(long idcarta, String pregunta, int respuesta) {
         this.idcarta = idcarta;
         this.pregunta = pregunta;
         this.respuesta = respuesta;
@@ -43,11 +30,11 @@ public class Pregunta {
         this.id = id;
     }
 
-    public int getIdcarta() {
+    public long getIdcarta() {
         return idcarta;
     }
 
-    public void setIdcarta(int idcarta) {
+    public void setIdcarta(long idcarta) {
         this.idcarta = idcarta;
     }
 
@@ -56,7 +43,7 @@ public class Pregunta {
         return pregunta;
     }
 
-    public void setPregunta(@NonNull String pregunta) {
+    public void setPregunta(String pregunta) {
         this.pregunta = pregunta;
     }
 
@@ -65,7 +52,7 @@ public class Pregunta {
         return respuesta;
     }
 
-    public void setRespuesta(@NonNull int respuesta) {
+    public void setRespuesta(int respuesta) {
         this.respuesta = respuesta;
     }
 

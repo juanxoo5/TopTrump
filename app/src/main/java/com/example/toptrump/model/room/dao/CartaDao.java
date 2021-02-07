@@ -23,18 +23,18 @@ import retrofit2.http.Path;
 
 public interface CartaDao {
 
-    @DELETE("coche/{id}")
+    @DELETE("carta/{id}")
     Call<Boolean> deleteCarta(@Path("id") long id);
 
-    @GET("coche")
+    @GET("carta")
     Call<ArrayList<Carta>> getCartas();
 
-    @GET("coche")
+    @GET("carta")
     Call<ResponseBody> getString();
 
-    @POST("coche")
+    @POST("carta")
     Call<Carta> postCarta(@Body Carta carta);
 
-    @PUT("coche/{id}")
+    @PUT("carta/{id}")
     Call<Boolean> putCarta(@Path("id") long id, @Body Carta carta);
 }

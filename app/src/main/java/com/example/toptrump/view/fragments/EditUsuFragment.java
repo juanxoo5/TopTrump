@@ -54,7 +54,12 @@ public class EditUsuFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewmodel = new ViewModelProvider(this).get(ViewModel.class);
 
-        navigation(view);
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        mainActivity = (MainActivity) view.getContext();
+        Toolbar toolbar = view.findViewById(R.id.tbEditUsuFrgm);
+        mainActivity.setSupportActionBar(toolbar);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
 
         Button btEditar = view.findViewById(R.id.btEditar);
         Button btEditarAvatar = view.findViewById(R.id.btEditarAvatar);
@@ -88,8 +93,6 @@ public class EditUsuFragment extends Fragment {
 
         etnombre.setText(nombre);
 
-        NavController navController = new NavController(view.getContext());
-
         imageView.setImageResource(avatar);
         btEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,54 +116,6 @@ public class EditUsuFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(EditUsuFragment.this).navigate(R.id.action_editUsuaFragment_to_editAvatarFragment);
             }
-        });
-
-    }
-
-    public void navigation(View view){
-
-        mainActivity = (MainActivity) view.getContext();
-        Toolbar toolbar = view.findViewById(R.id.tbEditUsuFrgm);
-        mainActivity.setSupportActionBar(toolbar);
-
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawerLayoutEditUsu);
-        NavigationView navigationView = view.findViewById(R.id.nav_view);
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.claveFragment:
-                        navController.navigate(R.id.claveFragment);
-                        return true;
-                    case R.id.juegoFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.juegoFragment);
-                        }else {
-                            navController.navigate(R.id.usuaFragment);
-                        }
-                        return true;
-                    case R.id.perfilFragment:
-                        if(mainActivity.usuarioActivo.isEmpty()){
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        } else {
-                            navController.navigate(R.id.perfilFragment);
-                        }
-                        return true;
-                    case R.id.seleccionar:
-                        navController.navigate(R.id.usuaFragment);
-                        return true;
-                }
-                return true;
-            }
-
         });
 
     }

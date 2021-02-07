@@ -23,18 +23,18 @@ import retrofit2.http.Path;
 
 public interface PreguntaDao {
 
-    @DELETE("coche/{id}")
+    @DELETE("pregunta/{id}")
     Call<Boolean> deletePregunta(@Path("id") long id);
 
-    @GET("coche")
+    @GET("pregunta")
     Call<ArrayList<Pregunta>> getPreguntas();
 
-    @GET("coche")
+    @GET("pregunta")
     Call<ResponseBody> getString();
 
-    @POST("coche")
+    @POST("pregunta")
     Call<Pregunta> postPregunta(@Body Pregunta pregunta);
 
-    @PUT("coche/{id}")
+    @PUT("pregunta/{id}")
     Call<Boolean> putPregunta(@Path("id") long id, @Body Pregunta pregunta);
 }
