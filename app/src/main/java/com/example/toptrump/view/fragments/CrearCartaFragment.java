@@ -104,12 +104,10 @@ public class CrearCartaFragment extends Fragment {
                     if (existe){
                         Snackbar.make(v, "El animal ya existe", Snackbar.LENGTH_SHORT).show();
                     }else{
-                        Bundle bundle = new Bundle();
-                        bundle.putString("imagen", imagen);
-                        bundle.putString("animal", etNombreAnimal.getText().toString());
-                        bundle.putString("descripcion", etDescripcion.getText().toString());
+                        viewModelActivity.insert(new Carta(imagen, etNombreAnimal.getText().toString(),
+                                etDescripcion.getText().toString()));
 
-                        navController.navigate(R.id.action_crearCartaFragment_to_preguntasCartaFragment, bundle);
+                        navController.navigate(R.id.action_crearCartaFragment_to_preguntasCartaFragment);
                     }
                 }
             }

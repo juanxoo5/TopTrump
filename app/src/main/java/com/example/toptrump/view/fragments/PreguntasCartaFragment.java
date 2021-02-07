@@ -29,6 +29,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.List;
+
 public class PreguntasCartaFragment extends Fragment {
 
     private TextView tvPregunta1;
@@ -59,8 +61,6 @@ public class PreguntasCartaFragment extends Fragment {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         Toolbar toolbar = view.findViewById(R.id.tbPreguntasFrgm);
         mainActivity.setSupportActionBar(toolbar);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
 
         tvPregunta1 = view.findViewById(R.id.tvPregunt1);
         tvPregunta2 = view.findViewById(R.id.tvPregunt2);
@@ -88,19 +88,7 @@ public class PreguntasCartaFragment extends Fragment {
                     if (respuesta4 <0 || respuesta4>10){
                         tietPregunta4.setError("El valor tiene que estar comprendido entre 0 y 10");
                     }else {
-                        String imgAnimal = getArguments().getString("imagen");
-                        String nomAnimal = getArguments().getString("animal");
-                        String descAnimal = getArguments().getString("descripcion");
-                        Long id;
-
-                        Carta carta = new Carta(imgAnimal, nomAnimal, descAnimal);
-                        Log.v("xyz", carta.toString());
-                        viewModelActivity.insert(carta);
-                        for (int i = 0; i<viewModelActivity.getListaCartas().size(); i++){
-                            if(viewModelActivity.getListaCartas().get(i).getId()>id){
-                                id = viewModelActivity.getListaCartas().get(i).getId();
-                            }
-                        }
+                        Long id = viewModelActivity.getListaCartas().get(viewModelActivity.getListaCartas().size()-1).getId();
                         Log.v("xyz", "id "+ id);
                         Pregunta pregunta1 = new Pregunta(id, tvPregunta1.getText().toString(), respuesta1);
                         Pregunta pregunta2 = new Pregunta(id, tvPregunta2.getText().toString(), respuesta2);
