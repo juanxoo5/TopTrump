@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -29,6 +30,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PreguntasCartaFragment extends Fragment {
@@ -42,6 +44,7 @@ public class PreguntasCartaFragment extends Fragment {
     private TextInputEditText tietPregunta3;
     private TextInputEditText tietPregunta4;
     private Button btCrear;
+    private List<Carta> listaCartas = new ArrayList<>();
 
     private ViewModel viewModelActivity;
 
@@ -57,6 +60,14 @@ public class PreguntasCartaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         MainActivity mainActivity = (MainActivity) view.getContext();
         viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
+
+        viewModelActivity.getListaCartas().observe(getViewLifecycleOwner(), new Observer<List<Carta>>() {
+            @Override
+            public void onChanged(List<Carta> cartas) {
+                Log.v("xyz", "longitud "+ cartas.size());
+                listaCartas = cartas;
+            }
+        });
 
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         Toolbar toolbar = view.findViewById(R.id.tbPreguntasFrgm);
@@ -88,7 +99,8 @@ public class PreguntasCartaFragment extends Fragment {
                     if (respuesta4 <0 || respuesta4>10){
                         tietPregunta4.setError("El valor tiene que estar comprendido entre 0 y 10");
                     }else {
-                        Long id = viewModelActivity.getListaCartas().get(viewModelActivity.getListaCartas().size()-1).getId();
+                        //Log.v("xyz", "longitud "+ listaCartas.size());
+                        Long id = listaCartas.get(listaCartas.size()-1).getId();
                         Log.v("xyz", "id "+ id);
                         Pregunta pregunta1 = new Pregunta(id, tvPregunta1.getText().toString(), respuesta1);
                         Pregunta pregunta2 = new Pregunta(id, tvPregunta2.getText().toString(), respuesta2);

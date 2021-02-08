@@ -91,7 +91,7 @@
         tools:layout="@layout/fragment_avatar" />
     <fragment
         android:id="@+id/fragmentMenu"
-        android:name="com.example.toptrump.view.fragments.fragmentMenu"
+        android:name="com.example.toptrump.view.fragments.FragmentMenu"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu">
         <action

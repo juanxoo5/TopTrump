@@ -7,8 +7,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.toptrump.model.room.DBTrump;
 import com.example.toptrump.model.room.FuncionesLaravel;
-import com.example.toptrump.model.room.dao.CartaDao;
-import com.example.toptrump.model.room.dao.PreguntaDao;
 import com.example.toptrump.model.room.dao.UsuarioDao;
 import com.example.toptrump.model.room.pojo.Carta;
 import com.example.toptrump.model.room.pojo.Pregunta;
@@ -22,8 +20,8 @@ public class Repository {
     private FuncionesLaravel funcionesLaravel;
     private UsuarioDao usuarioDao;
 
-    private List<Carta> listaCartas;
-    private List<Pregunta> listaPreguntas;
+    private MutableLiveData<List<Carta>> listaCartas;
+    private MutableLiveData<List<Pregunta>> listaPreguntas;
     private LiveData<List<Usuario>> liveUsuarioList;
 
     public Repository(Context context) {
@@ -32,13 +30,15 @@ public class Repository {
         this.funcionesLaravel = new FuncionesLaravel();
     }
 
-    public List<Carta> getListaCartas() {
-        listaCartas = funcionesLaravel.mostrarCartas();
+    public MutableLiveData<List<Carta>> getListaCartas() {
+        funcionesLaravel.mostrarCartas();
+        listaCartas = funcionesLaravel.listaCartas;
         return listaCartas;
     }
 
-    public List<Pregunta> getListaPreguntas() {
-        listaPreguntas = funcionesLaravel.mostrarPreguntas();
+    public MutableLiveData<List<Pregunta>> getListaPreguntas() {
+        funcionesLaravel.mostrarPreguntas();
+        listaPreguntas = funcionesLaravel.listaPreguntas;
         return listaPreguntas;
     }
 

@@ -8,12 +8,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,11 +38,14 @@ import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class JuegoFragment extends Fragment {
 
     private ViewModel viewModel;
+    private List<Carta> listaCartas = new ArrayList<>();
+    private List<Pregunta> listaPreguntas = new ArrayList<>();
     private Carta carta;
     private Pregunta pregunta;
     private MainActivity mainActivity;
@@ -64,15 +70,41 @@ public class JuegoFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         mainActivity = (MainActivity) view.getContext();
 
-        if (!viewModel.getListaCartas().toString().equals("[]")){
-            seleccionCarta();
+        viewModel.getListaCartas().observe(getViewLifecycleOwner(), new Observer<List<Carta>>() {
+            @Override
+            public void onChanged(List<Carta> cartas) {
+                Log.v("xyz", "carta " + cartas.size());
+                listaCartas = cartas;
+            }
+        });
+        viewModel.getListaPreguntas().observe(getViewLifecycleOwner(), new Observer<List<Pregunta>>() {
+            @Override
+            public void onChanged(List<Pregunta> preguntas) {
+                Log.v("xyz", "carta " + preguntas.size());
+                listaPreguntas = preguntas;
+            }
+        });
 
-            imgAnimal = view.findViewById(R.id.imgCart);
-            tvNombre = view.findViewById(R.id.tvNombre);
-            tvDescripcion = view.findViewById(R.id.tvDescripcion);
-            tvPregunta = view.findViewById(R.id.tvPregunta);
-            etRespuesta = view.findViewById(R.id.etRespuesta);
-            btRespuesta = view.findViewById(R.id.btEnviar);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                init(view);
+            }
+        }, 1000);
+
+    }
+
+    public void init(View view){
+        imgAnimal = view.findViewById(R.id.imgCart);
+        tvNombre = view.findViewById(R.id.tvNombre);
+        tvDescripcion = view.findViewById(R.id.tvDescripcion);
+        tvPregunta = view.findViewById(R.id.tvPregunta);
+        etRespuesta = view.findViewById(R.id.etRespuesta);
+        btRespuesta = view.findViewById(R.id.btEnviar);
+
+        if (listaCartas.size() != 0){
+            seleccionCarta();
 
             Glide.with(view.getContext()).load(carta.getUrl()).into(imgAnimal);
             tvNombre.setText(carta.getNombre());
@@ -85,7 +117,7 @@ public class JuegoFragment extends Fragment {
         btRespuesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!viewModel.getListaCartas().toString().equals("[]")) {
+                if (listaCartas.size() != 0) {
                     if (etRespuesta.getText().toString().isEmpty()) {
                         Toast.makeText(v.getContext(), "Introduzca una respuesta", Toast.LENGTH_LONG).show();
                     } else if (etRespuesta.getText().toString().equalsIgnoreCase(String.valueOf(pregunta.getRespuesta()))) {
@@ -110,7 +142,6 @@ public class JuegoFragment extends Fragment {
                 }
             }
         });
-
     }
 
     public void seleccionCarta(){
@@ -119,19 +150,20 @@ public class JuegoFragment extends Fragment {
 
         Random r = new Random();
 
-        int randomCarta = r.nextInt(viewModel.getListaCartas().size());
-        carta = viewModel.getListaCartas().get(randomCarta);
+        Log.v("xyz", "random" + listaCartas.size());
+        int randomCarta = r.nextInt(listaCartas.size());
+        carta = listaCartas.get(randomCarta);
 
-        for(int i = 0; i <= viewModel.getListaPreguntas().size(); i++){
+        for(int i = 0; i < listaPreguntas.size(); i++){
 
-            if(viewModel.getListaPreguntas().get(i).getIdcarta() == carta.getId()){
-                preguntas.add(viewModel.getListaPreguntas().get(i));
+            if(listaPreguntas.get(i).getIdcarta() == carta.getId()){
+                preguntas.add(listaPreguntas.get(i));
             }
 
         }
 
         int randomPregunta = r.nextInt(preguntas.size());
-        pregunta = viewModel.getListaPreguntas().get(randomPregunta);
+        pregunta = listaPreguntas.get(randomPregunta);
 
     }
 

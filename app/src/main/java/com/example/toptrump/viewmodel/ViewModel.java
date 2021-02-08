@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.toptrump.model.Repository;
 import com.example.toptrump.model.room.pojo.Carta;
@@ -22,11 +23,11 @@ public class ViewModel extends AndroidViewModel {
         repository = new Repository(application);
     }
 
-    public List<Carta> getListaCartas() {
+    public MutableLiveData<List<Carta>> getListaCartas() {
         return repository.getListaCartas();
     }
 
-    public List<Pregunta> getListaPreguntas() {
+    public MutableLiveData<List<Pregunta>> getListaPreguntas() {
         return repository.getListaPreguntas();
     }
 

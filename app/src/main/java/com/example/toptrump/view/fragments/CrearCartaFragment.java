@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -44,7 +45,7 @@ public class CrearCartaFragment extends Fragment {
     private Button btEnviar;
 
     private ViewModel viewModelActivity;
-    private List<Carta> cartas = new ArrayList<>();
+    private List<Carta> listaCartas = new ArrayList<>();
     private boolean existe = false;
     private String imagen = "https://www.lifeder.com/wp-content/uploads/2018/10/question-mark-2123967_640.jpg";
 
@@ -59,7 +60,12 @@ public class CrearCartaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         MainActivity mainActivity = (MainActivity) view.getContext();
         viewModelActivity = new ViewModelProvider(this).get(ViewModel.class);
-        cartas = viewModelActivity.getListaCartas();
+        viewModelActivity.getListaCartas().observe(getViewLifecycleOwner(), new Observer<List<Carta>>() {
+            @Override
+            public void onChanged(List<Carta> cartas) {
+                listaCartas = cartas;
+            }
+        });
 
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         Toolbar toolbar = view.findViewById(R.id.tbCrearCartaFrgm);
@@ -95,8 +101,8 @@ public class CrearCartaFragment extends Fragment {
                         TextUtils.isEmpty(etDescripcion.getText())){
 
                 }else{
-                    for (int i=0; i<cartas.size(); i++){
-                        if (etNombreAnimal.getText().toString().equalsIgnoreCase(cartas.get(i).getNombre())){
+                    for (int i=0; i<listaCartas.size(); i++){
+                        if (etNombreAnimal.getText().toString().equalsIgnoreCase(listaCartas.get(i).getNombre())){
                             existe = true;
                             break;
                         }

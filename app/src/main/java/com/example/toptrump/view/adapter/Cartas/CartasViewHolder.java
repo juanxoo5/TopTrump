@@ -26,7 +26,7 @@ public class CartasViewHolder extends RecyclerView.ViewHolder{
     public CartasViewHolder(@NonNull View itemView) {
         super(itemView);
         view = itemView;
-        this.Animal = itemView.findViewById(R.id.imgAnimal);
+        this.Animal = itemView.findViewById(R.id.imgAnimalCarta);
         this.tvNombAnimal = itemView.findViewById(R.id.tvNomAnimal);
         this.tvDescripAnimal = itemView.findViewById(R.id.tvDescripAnimal);
         this.layout = itemView.findViewById(R.id.ConstraintLayoutCarta);

@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.example.toptrump.R;
 import com.example.toptrump.model.room.pojo.Carta;
 import com.example.toptrump.model.room.pojo.Usuario;
+import com.example.toptrump.model.util.UtilThread;
 import com.example.toptrump.view.MainActivity;
 import com.example.toptrump.view.adapter.AdminUsu.AdminUsuAdapter;
 import com.example.toptrump.view.adapter.Cartas.CartasAdapter;
@@ -114,8 +115,16 @@ public class AdmCartFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rvAdminCarta);
         recyclerView.setHasFixedSize(true);
         adapter = new CartasAdapter(new CartasAdapter.UsuarioDiff());
-        listaCarta = viewModelActivity.getListaCartas();
-        adapter.submitList(listaCarta);
+        viewModelActivity.getListaCartas().observe(getViewLifecycleOwner(), new Observer<List<Carta>>() {
+            @Override
+            public void onChanged(List<Carta> cartas) {
+                Log.v("xyzCartas", "cartas "+ cartas);
+                adapter.submitList(cartas);
+                //listaCarta = cartas;
+            }
+        });
+        //Log.v("xyz", "cartas "+ listaCarta.toString());
+        //adapter.submitList(listaCarta);
         layoutManager = new GridLayoutManager(getActivity(),1);
         layoutManager.canScrollHorizontally();
         recyclerView.setLayoutManager(layoutManager);

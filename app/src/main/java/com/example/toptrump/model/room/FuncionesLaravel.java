@@ -3,6 +3,8 @@ package com.example.toptrump.model.room;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.toptrump.model.room.dao.CartaDao;
 import com.example.toptrump.model.room.dao.PreguntaDao;
 import com.example.toptrump.model.room.pojo.Carta;
@@ -20,8 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FuncionesLaravel {
 
     private String url = "https://informatica.ieszaidinvergeles.org:9034/laravel/toptrump/public/api/";
-    private List<Carta> listaCartas = new ArrayList<>();
-    private List<Pregunta> listaPreguntas = new ArrayList<>();
+    public MutableLiveData<List<Carta>> listaCartas = new MutableLiveData<>();
+    public MutableLiveData<List<Pregunta>> listaPreguntas = new MutableLiveData<>();
 
     public void insertCarta(Carta carta){
         Retrofit retrofit = new Retrofit.Builder()
@@ -89,7 +91,7 @@ public class FuncionesLaravel {
         });
     }
 
-    public List<Carta> mostrarCartas(){
+    public void mostrarCartas(){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -104,7 +106,7 @@ public class FuncionesLaravel {
             public void onResponse(Call<ArrayList<Carta>> call, Response<ArrayList<Carta>> response) {
                 try{
                     Log.v("XYZresponse", response.body().toString());
-                    listaCartas = response.body();
+                    listaCartas.setValue(response.body());
                     Log.v("XYZlista", listaCartas.toString());
                 }catch (NullPointerException e){
                     Log.v("xyz", "Ha habido un error");
@@ -117,7 +119,6 @@ public class FuncionesLaravel {
             }
         });
         Log.v("XYZlista2", listaCartas.toString());
-        return listaCartas;
     }
 
     public void insertPregunta(Pregunta pregunta){
@@ -186,7 +187,7 @@ public class FuncionesLaravel {
         });
     }
 
-    public List<Pregunta> mostrarPreguntas(){
+    public void mostrarPreguntas(){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -199,9 +200,13 @@ public class FuncionesLaravel {
         request.enqueue(new Callback<ArrayList<Pregunta>>() {
             @Override
             public void onResponse(Call<ArrayList<Pregunta>> call, Response<ArrayList<Pregunta>> response) {
-                Log.v("XYZresponse", response.body().toString());
-                listaPreguntas = response.body();
-                Log.v("XYZlista", listaPreguntas.toString());
+                try{
+                    Log.v("XYZresponse", response.body().toString());
+                    listaPreguntas.setValue(response.body());
+                    Log.v("XYZlista", listaCartas.toString());
+                }catch (NullPointerException e){
+                    Log.v("xyz", "Ha habido un error");
+                }
             }
 
             @Override
@@ -210,7 +215,6 @@ public class FuncionesLaravel {
             }
         });
         Log.v("XYZlista2", listaPreguntas.toString());
-        return listaPreguntas;
     }
 
 }

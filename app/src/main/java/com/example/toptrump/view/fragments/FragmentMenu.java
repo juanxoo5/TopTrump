@@ -27,7 +27,7 @@ import com.example.toptrump.R;
 import com.example.toptrump.view.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 
-public class fragmentMenu extends Fragment {
+public class FragmentMenu extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
