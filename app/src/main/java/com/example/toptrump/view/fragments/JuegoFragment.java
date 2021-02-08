@@ -36,6 +36,7 @@ import com.example.toptrump.model.room.pojo.Pregunta;
 import com.example.toptrump.view.MainActivity;
 import com.example.toptrump.viewmodel.ViewModel;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,8 @@ public class JuegoFragment extends Fragment {
     private EditText etRespuesta;
     private Button btRespuesta;
 
+    private  NavController navController;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class JuegoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         mainActivity = (MainActivity) view.getContext();
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment2);
 
         viewModel.getListaCartas().observe(getViewLifecycleOwner(), new Observer<List<Carta>>() {
             @Override
@@ -89,7 +93,12 @@ public class JuegoFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                init(view);
+                if(listaCartas.size()==0){
+                    Toast.makeText(view.getContext(), "No hay cartas en la base de datos", Toast.LENGTH_SHORT).show();
+                    navController.navigate(R.id.action_juegoFragment_to_usuaFragment);
+                }else {
+                    init(view);
+                }
             }
         }, 1000);
 
@@ -111,8 +120,6 @@ public class JuegoFragment extends Fragment {
             tvDescripcion.setText(carta.getDescripcion());
             tvPregunta.setText(pregunta.getPregunta());
         }
-
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         btRespuesta.setOnClickListener(new View.OnClickListener() {
             @Override
