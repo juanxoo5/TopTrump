@@ -44,7 +44,7 @@ public class UsuaFragment extends Fragment implements MainActivity.OnBackPressed
     private RecyclerView recyclerView;
     private UsuariosAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private static List<Usuario> usuarioLista;
+    private boolean vacio = false;
     private NavController navController;
 
 
@@ -75,18 +75,17 @@ public class UsuaFragment extends Fragment implements MainActivity.OnBackPressed
             @Override
             public void onChanged(List<Usuario> usuarios) {
                 adapter.submitList(usuarios);
-                usuarioLista = usuarios;
-                Log.v("XYZ",usuarioLista.toString());
+                if (usuarios.toString().equals("[]")) {
+                    tvVacio.setText("No hay usuarios creados");
+                }
             }
         });
 
         layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        if(recyclerView.getAdapter() != null){
-            if(recyclerView.getAdapter().getItemCount() == 0) {
-                tvVacio.setText("No hay usuarios creados");
-            }
+        if(vacio == true){
+            tvVacio.setText("No hay usuarios creados");
         }
     }
 

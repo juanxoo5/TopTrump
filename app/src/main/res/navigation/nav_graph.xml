@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_admCartFragment_to_crearCartaFragment"
             app:destination="@id/crearCartaFragment" />
+        <action
+            android:id="@+id/action_admCartFragment_to_muestraPreguntasFragment"
+            app:destination="@id/muestraPreguntasFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
@@ -119,5 +122,10 @@
             android:id="@+id/action_preguntasCartaFragment_to_admCartFragment"
             app:destination="@id/admCartFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/muestraPreguntasFragment"
+        android:name="com.example.toptrump.view.fragments.MuestraPreguntasFragment"
+        android:label="fragment_muestra_preguntas"
+        tools:layout="@layout/fragment_muestra_preguntas" />
 
 </navigation>

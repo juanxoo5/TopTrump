@@ -114,7 +114,10 @@ public class JuegoFragment extends Fragment {
 
         if (listaCartas.size() != 0){
             seleccionCarta();
-
+            if(!carta.getUrl().contains("https://")){
+                String url = carta.getUrl();
+                carta.setUrl("https://informatica.ieszaidinvergeles.org:9034/toptrump/images/"+url);
+            }
             Glide.with(view.getContext()).load(carta.getUrl()).into(imgAnimal);
             tvNombre.setText(carta.getNombre());
             tvDescripcion.setText(carta.getDescripcion());

@@ -46,7 +46,6 @@ public class AdmCartFragment extends Fragment {
     private RecyclerView recyclerView;
     private CartasAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private static List<Carta> listaCarta;
     private NavController navController;
 
     @Override
@@ -79,37 +78,7 @@ public class AdmCartFragment extends Fragment {
                 new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
         NavigationUI.setupActionBarWithNavController(mainActivity, navController, appBarConfiguration);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.claveFragment:
-                        navController.navigate(R.id.claveFragment);
-                        return true;
-                    case R.id.juegoFragment:
-                        if(!mainActivity.usuarioActivo.isEmpty()){
-                            navController.navigate(R.id.juegoFragment);
-                        }else {
-                            navController.navigate(R.id.usuaFragment);
-                        }
-                        return true;
-                    case R.id.perfilFragment:
-                        if(mainActivity.usuarioActivo.isEmpty()){
-                            Toast toast = Toast.makeText(view.getContext()," Selecciona antes un usuario ", Toast.LENGTH_SHORT);
-                            toast.getView().setBackgroundColor(Color.RED);
-                            toast.show();
-                        } else {
-                            navController.navigate(R.id.perfilFragment);
-                        }
-                        return true;
-                    case R.id.seleccionar:
-                        navController.navigate(R.id.usuaFragment);
-                        return true;
-                }
-                return true;
-            }
-
-        });
+        NavigationUI.setupWithNavController(navigationView, navController);
 
     }
 
@@ -121,22 +90,17 @@ public class AdmCartFragment extends Fragment {
         viewModelActivity.getListaCartas().observe(getViewLifecycleOwner(), new Observer<List<Carta>>() {
             @Override
             public void onChanged(List<Carta> cartas) {
-                Log.v("xyzCartas", "cartas "+ cartas);
+                Log.v("xyzCartas", "cartas " + cartas);
                 adapter.submitList(cartas);
-                //listaCarta = cartas;
+                if (cartas.toString().equals("[]")) {
+                    tvVacio.setText("No hay cartas creadas");
+                }
             }
         });
-        //Log.v("xyz", "cartas "+ listaCarta.toString());
-        //adapter.submitList(listaCarta);
         layoutManager = new GridLayoutManager(getActivity(),1);
         layoutManager.canScrollHorizontally();
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        if(recyclerView.getAdapter() != null){
-            if(recyclerView.getAdapter().getItemCount() == 0) {
-                tvVacio.setText("No hay cartas creadas");
-            }
-        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.toptrump.view.adapter.Cartas;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,16 +30,20 @@ public class CartasAdapter extends ListAdapter<Carta, CartasViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CartasViewHolder holder, int position) {
         Carta current = getItem(position);
-        /*if(!current.getUrl().contains("https://")){
+        if(!current.getUrl().contains("https://")){
             String url = current.getUrl();
             current.setUrl("https://informatica.ieszaidinvergeles.org:9034/toptrump/images/"+url);
-        }*/
+        }
         Log.v("xyzUrl", current.getUrl());
         holder.bind(current.getUrl(), current.getNombre(), current.getDescripcion());
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putLong("id", current.getId());
 
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_admCartFragment_to_muestraPreguntasFragment,bundle);
             }
         });
     }
