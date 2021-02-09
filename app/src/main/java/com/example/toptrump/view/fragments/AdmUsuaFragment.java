@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ import java.util.List;
 public class AdmUsuaFragment extends Fragment {
 
     private ViewModel viewModelActivity;
+    private TextView tvVacio;
     private RecyclerView recyclerView;
     private AdminUsuAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -81,6 +83,7 @@ public class AdmUsuaFragment extends Fragment {
     }
 
     private void init(View view) {
+        tvVacio = view.findViewById(R.id.tvAdminUsuVacio);
         recyclerView = view.findViewById(R.id.rvAdminUsur);
         recyclerView.setHasFixedSize(true);
         adapter = new AdminUsuAdapter(new AdminUsuAdapter.UsuarioDiff());
@@ -96,6 +99,11 @@ public class AdmUsuaFragment extends Fragment {
         layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        if(recyclerView.getAdapter() != null){
+            if(recyclerView.getAdapter().getItemCount() == 0) {
+                tvVacio.setText("No hay usuarios creados");
+            }
+        }
     }
 
     @Override

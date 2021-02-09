@@ -25,6 +25,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.toptrump.R;
@@ -39,6 +40,7 @@ import java.util.List;
 public class UsuaFragment extends Fragment implements MainActivity.OnBackPressedListener{
 
     private ViewModel viewModelActivity;
+    private TextView tvVacio;
     private RecyclerView recyclerView;
     private UsuariosAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -64,6 +66,7 @@ public class UsuaFragment extends Fragment implements MainActivity.OnBackPressed
     }
 
     private void init(View view) {
+        tvVacio = view.findViewById(R.id.tvUsuVacio);
         recyclerView = view.findViewById(R.id.rvUsuarios);
         recyclerView.setHasFixedSize(true);
         adapter = new UsuariosAdapter(new UsuariosAdapter.UsuarioDiff());
@@ -80,6 +83,11 @@ public class UsuaFragment extends Fragment implements MainActivity.OnBackPressed
         layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        if(recyclerView.getAdapter() != null){
+            if(recyclerView.getAdapter().getItemCount() == 0) {
+                tvVacio.setText("No hay usuarios creados");
+            }
+        }
     }
 
     @Override

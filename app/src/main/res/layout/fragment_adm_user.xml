@@ -36,7 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
+                android:background="@drawable/fondopregunta"
+                android:gravity="center"
                 android:text="@string/usuarios_creados"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
@@ -51,6 +52,17 @@
                 android:layout_height="0dp"
                 android:background="@drawable/fondorecycler"
                 android:padding="65dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUsurCreados" />
+
+            <TextView
+                android:id="@+id/tvAdminUsuVacio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#006704"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

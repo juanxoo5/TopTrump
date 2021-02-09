@@ -24,6 +24,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.toptrump.R;
@@ -41,6 +42,7 @@ import java.util.List;
 public class AdmCartFragment extends Fragment {
 
     private ViewModel viewModelActivity;
+    private TextView tvVacio;
     private RecyclerView recyclerView;
     private CartasAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -112,6 +114,7 @@ public class AdmCartFragment extends Fragment {
     }
 
     private void init(View view) {
+        tvVacio = view.findViewById(R.id.tvCartasVacio);
         recyclerView = view.findViewById(R.id.rvAdminCarta);
         recyclerView.setHasFixedSize(true);
         adapter = new CartasAdapter(new CartasAdapter.UsuarioDiff());
@@ -129,6 +132,11 @@ public class AdmCartFragment extends Fragment {
         layoutManager.canScrollHorizontally();
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        if(recyclerView.getAdapter() != null){
+            if(recyclerView.getAdapter().getItemCount() == 0) {
+                tvVacio.setText("No hay cartas creadas");
+            }
+        }
     }
 
     @Override
