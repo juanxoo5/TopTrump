@@ -2,39 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayoutCrearCarta"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerLayoutCrearCarta"
     android:background="@drawable/fondomovil"
-    tools:context=".view.fragments.CrearCartaFragment" >
+    tools:context=".view.fragments.CrearCartaFragment">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tbCrearCartaFrgm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbCrearCartaFrgm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imgAnimal"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@null"
-                android:contentDescription="@string/imagen"
-                app:layout_constraintBottom_toTopOf="@+id/etUrlImagen"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tbCrearCartaFrgm"
-                tools:src="@tools:sample/avatars" />
+    <ImageView
+        android:id="@+id/imgAnimal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
+        android:contentDescription="@string/imagen"
+        app:layout_constraintBottom_toTopOf="@+id/etUrlImagen"
+        app:layout_constraintEnd_toStartOf="@+id/guideline28"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbCrearCartaFrgm"
+        tools:src="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/btCambiarImagen"
@@ -45,7 +43,7 @@
         android:text="@string/cambiar_imagen"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="@id/etUrlImagen"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline28"
         app:layout_constraintStart_toEndOf="@id/etUrlImagen"
         app:layout_constraintTop_toTopOf="@+id/etUrlImagen" />
 
@@ -53,7 +51,6 @@
         android:id="@+id/etNombreAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:autofillHints=""
         android:background="@drawable/fondoet"
         android:ems="10"
@@ -64,14 +61,13 @@
         android:textColorHint="#6C6C6C"
         app:layout_constraintBottom_toTopOf="@id/etDescripcion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintStart_toStartOf="@+id/guideline28"
+        app:layout_constraintTop_toBottomOf="@+id/tbCrearCartaFrgm" />
 
     <EditText
         android:id="@+id/etDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         android:layout_marginBottom="75dp"
         android:autofillHints=""
         android:background="@drawable/fondoet"
@@ -85,7 +81,7 @@
         android:textColorHint="#6C6C6C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline28"
         app:layout_constraintTop_toBottomOf="@+id/etNombreAnimal"
         tools:ignore="RtlCompat" />
 
@@ -98,22 +94,14 @@
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline28"
         app:layout_constraintTop_toBottomOf="@+id/etDescripcion" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.45" />
 
     <EditText
         android:id="@+id/etUrlImagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:background="@drawable/fondoet"
         android:ems="10"
@@ -122,9 +110,16 @@
         android:paddingStart="20dp"
         android:textColor="#000000"
         android:textColorHint="#6C6C6C"
-        app:layout_constraintBottom_toTopOf="@+id/guideline13"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btCambiarImagen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgAnimal" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

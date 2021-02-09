@@ -2,22 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayoutPreguntasCarta"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerLayoutPreguntasCarta"
     android:background="@drawable/fondomovil"
-    tools:context=".view.fragments.PreguntasCartaFragment" >
+    tools:context=".view.fragments.PreguntasCartaFragment">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tbPreguntasFrgm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbPreguntasFrgm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPregunt1"
@@ -28,23 +28,22 @@
         android:text="@string/tamaño"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/tilPregunta1"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbPreguntasFrgm" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPregunta1"
         style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/fondoet"
         android:gravity="center"
         android:textColorHint="#6C6C6C"
         app:boxBackgroundMode="outline"
         app:layout_constraintBottom_toTopOf="@+id/tvPregunt2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPregunt1">
 
@@ -68,23 +67,22 @@
         android:text="@string/peso"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/tilPregunta2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tilPregunta1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPregunta2"
         style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/fondoet"
         android:gravity="center"
         android:textColorHint="#6C6C6C"
         app:boxBackgroundMode="outline"
-        app:layout_constraintBottom_toTopOf="@+id/tvPregunt3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btPreguntas"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPregunt2">
 
@@ -108,22 +106,21 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/tilPregunta3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilPregunta2" />
+        app:layout_constraintStart_toStartOf="@+id/guideline34"
+        app:layout_constraintTop_toBottomOf="@+id/tbPreguntasFrgm" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPregunta3"
         style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/fondoet"
         android:textColorHint="#6C6C6C"
         app:boxBackgroundMode="outline"
         app:layout_constraintBottom_toTopOf="@+id/tvPregunt4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline34"
         app:layout_constraintTop_toBottomOf="@+id/tvPregunt3">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -146,15 +143,14 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/tilPregunta4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline34"
         app:layout_constraintTop_toBottomOf="@+id/tilPregunta3" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPregunta4"
         style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/fondoet"
         android:textColorHint="#6C6C6C"
@@ -162,7 +158,7 @@
         app:errorEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/btPreguntas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline34"
         app:layout_constraintTop_toBottomOf="@+id/tvPregunt4">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -186,4 +182,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilPregunta4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@
             android:layout_height="0dp"
             android:background="@null"
             android:contentDescription="@string/imagen"
-            app:layout_constraintBottom_toTopOf="@+id/tvNombre"
+            app:layout_constraintBottom_toTopOf="@+id/guideline29"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,20 +30,24 @@
         <TextView
             android:id="@+id/tvNombre"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/fondopregunta"
+            android:gravity="center"
             android:text="@string/nombre"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tvDescripcion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgCart" />
+            app:layout_constraintTop_toTopOf="@+id/guideline29" />
 
         <TextView
             android:id="@+id/tvDescripcion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="64dp"
+            android:background="@drawable/fondopregunta"
+            android:gravity="center"
             android:text="@string/descripcion"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
@@ -55,8 +59,10 @@
         <TextView
             android:id="@+id/tvPregunta"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="32dp"
+            android:background="@drawable/fondopregunta"
+            android:gravity="center"
             android:text="@string/pregunta"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
@@ -68,9 +74,10 @@
         <Button
             android:id="@+id/btEnviar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_height="0dp"
+            android:background="@drawable/fondoboton"
             android:text="@string/enviar_respuesta"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,14 +89,26 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:autofillHints=""
+            android:background="@drawable/fondoet"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/respuesta"
             android:inputType="textPersonName"
-            android:textColorHint="#FFBDBDBD"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:textColor="#000000"
+            android:textColorHint="#6C6C6C"
             app:layout_constraintBottom_toTopOf="@+id/btEnviar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPregunta" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.41997263" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

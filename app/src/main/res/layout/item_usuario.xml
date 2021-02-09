@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imgUsu"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="175dp"
         android:background="@null"
         android:contentDescription="@string/imagen"
         app:layout_constraintBottom_toTopOf="@id/guideline14"
@@ -24,15 +24,17 @@
     <TextView
         android:id="@+id/tvNombUsu"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:background="@drawable/fondopregunta"
         android:gravity="center"
         android:text="@string/nombre"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline14" />
+        app:layout_constraintTop_toBottomOf="@+id/imgUsu" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline14"
