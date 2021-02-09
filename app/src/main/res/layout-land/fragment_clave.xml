@@ -14,74 +14,73 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <TextView
-            android:id="@+id/tvClave2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/introduzca_clave_de_administrador"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/tilClave2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline26" />
-
-        <Button
-            android:id="@+id/btEnvClav2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="270dp"
-            android:layout_marginEnd="270dp"
-            android:background="@drawable/fondoboton"
-            android:text="@string/enviar"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toTopOf="@+id/guideline27"
-            app:layout_constraintEnd_toEndOf="@+id/tilClave2"
-            app:layout_constraintStart_toStartOf="@+id/tilClave2"
-            app:layout_constraintTop_toBottomOf="@+id/tilClave2" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilClave2"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/fondoet"
-            android:paddingStart="40dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="40dp"
-            android:textColorHint="#6C6C6C"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="password_toggle"
-            app:endIconTint="#000000"
-            app:errorEnabled="true"
-            app:layout_constraintBottom_toTopOf="@+id/btEnvClav2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvClave2">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietClave2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/clave"
-                android:inputType="textPassword"
-                android:textColor="#000000" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline26"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.30656934" />
+            app:layout_constraintGuide_percent="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline27"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.72262776" />
+            app:layout_constraintGuide_percent="0.9" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/guideline27"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline26">
+
+            <TextView
+                android:id="@+id/tvClave2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/fondopregunta"
+                android:gravity="center"
+                android:text="@string/introduzca_clave_de_administrador"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilClave2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fondoet"
+                android:paddingStart="40dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="40dp"
+                android:textColorHint="#6C6C6C"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="password_toggle"
+                app:endIconTint="#000000"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietClave2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/clave"
+                    android:inputType="textPassword"
+                    android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btEnvClav2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/fondoboton"
+                android:text="@string/enviar"
+                app:backgroundTint="@null" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,9 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/fondoet"
-            android:paddingStart="20dp"
+            android:paddingStart="40dp"
             android:paddingTop="10dp"
-            android:paddingEnd="20dp"
+            android:paddingEnd="40dp"
             android:textColorHint="#6C6C6C"
             app:boxBackgroundMode="outline"
             app:endIconMode="password_toggle"
@@ -72,8 +72,9 @@
 
         <Button
             android:id="@+id/btEnvClav"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@drawable/fondoboton"
             android:text="@string/enviar"
             app:backgroundTint="@null" />
@@ -84,6 +85,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
